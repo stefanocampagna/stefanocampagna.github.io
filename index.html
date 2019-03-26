@@ -1,107 +1,162 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
-</head>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.css"
+    />
 
-<body>
-    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
-        <div class="container"><a class="navbar-brand logo" href="index.html">Stefano Campagna</a><button class="navbar-toggler"
-                data-toggle="collapse" data-target="#navbarNav"><span class="sr-only">Toggle navigation</span><span
-                    class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.html">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="projects-grid-cards.html">Projects</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="cv.html">CV</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="contact.html">Contact</a></li>
-                </ul>
-            </div>
+    <!-- <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lato:300,400,700"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css"
+    />
+  </head>
+  <style>
+    body {
+      font-family: "Fira Code", monospace;
+    }
+  </style>
+  <body>
+    <nav
+      class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient"
+    >
+      <div class="container">
+        <a class="navbar-brand logo" href="index.html">Stefano Campagna</a
+        ><button
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+        >
+          <span class="sr-only">Toggle navigation</span
+          ><span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item" role="presentation">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <!-- <li class="nav-item" role="presentation"><a class="nav-link" href="projects-grid-cards.html">Projects</a></li> -->
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" href="cv.html">CV</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
     <main class="page lanidng-page">
-        <section class="portfolio-block block-intro">
-            <div class="container" data-aos="fade-down" data-aos-delay="50">
-                <div class="avatar" style="background-image:url(&quot;assets/img/avatars/avatar.jpg&quot;);"></div>
-                <div class="about-me">
-                    <p>Hello! I am <strong>Stefano Campagna</strong>.&nbsp;<br>I work as Java Full Stack
-                        developer.&nbsp;<br>I have passion for technology, food and web.</p><a class="btn btn-outline-primary"
-                        role="button" href="contact.html">Hire me</a>
+      <section class="portfolio-block block-intro">
+        <div class="container" data-aos="fade-down" data-aos-delay="50">
+          <div
+            class="avatar"
+            style='background-image:url("assets/img/avatars/avatar-cartoon.png");'
+          ></div>
+          <div class="about-me">
+            <p>
+              Hello! I am <strong>Stefano Campagna</strong>.&nbsp;<br />I work
+              as Full Stack Developer.&nbsp;<br />I have passion for technology,
+              food and web.
+            </p>
+            <a class="btn btn-outline-primary" role="button" href="contact.html"
+              >Hire me</a
+            >
+            <a class="btn btn-outline-primary" role="button" href="cv.html"
+              >Curriculum</a
+            >
+          </div>
+        </div>
+      </section>
+      <section
+        class="portfolio-block skills"
+        style="padding-top:0"
+        data-aos="fade-up"
+        data-aos-duration="900"
+        data-aos-offset="100px"
+        data-aos-delay="200"
+      >
+        <div class="container">
+          <div class="pulse animated heading">
+            <h2>Special Skills</h2>
+          </div>
+          <div class="row">
+            <div
+              class="col-md-4"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-offset="100px"
+              data-aos-delay="200"
+            >
+              <div class="card special-skill-item border-0">
+                <div class="card-header bg-transparent border-0">
+                  <i class="icon ion-ios-star-outline"></i>
                 </div>
+                <div class="card-body">
+                  <h3 class="card-title">Web Design</h3>
+                  <p class="card-text">
+                    I think that a good design is a must have these days.&nbsp;
+                  </p>
+                </div>
+              </div>
             </div>
-        </section>
-        <section class="portfolio-block photography">
-            <div class="container">
-                <div class="row no-gutters">
-                    <div class="col-md-6 col-lg-4 item zoom-on-hover" data-aos="fade-up" data-aos-duration="900"
-                        data-aos-offset="100px" data-aos-delay="200" data-aos-once="true"><a href="#"><img class="img-fluid image"
-                                src="assets/img/nature/image3.jpg"></a></div>
-                    <div class="col-md-6 col-lg-4 item zoom-on-hover" data-aos="fade-up" data-aos-duration="900"
-                        data-aos-offset="100px" data-aos-delay="300"><a href="#"><img class="img-fluid image" src="assets/img/nature/image2.jpg"></a></div>
-                    <div class="col-md-6 col-lg-4 item zoom-on-hover" data-aos="fade-up" data-aos-duration="900"
-                        data-aos-offset="100px" data-aos-delay="400"><a href="#"><img class="img-fluid image" src="assets/img/tech/image4.jpg"></a></div>
+            <div
+              class="col-md-4"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-offset="100px"
+              data-aos-delay="300"
+            >
+              <div class="card special-skill-item border-0">
+                <div class="card-header bg-transparent border-0">
+                  <i class="icon ion-ios-heart-outline"></i>
                 </div>
+                <div class="card-body">
+                  <h3 class="card-title">Love what I do</h3>
+                  <p class="card-text">
+                    I think that loving what you are doing is the secret.
+                  </p>
+                </div>
+              </div>
             </div>
-        </section>
-        <section class="portfolio-block call-to-action border-bottom">
-            <div class="container" data-aos="fade" data-aos-offset="100px" data-aos-delay="700">
-                <div class="d-flex justify-content-center align-items-center content">
-                    <h3>Like what you see?</h3><a class="btn btn-primary btn-lg" role="button" href="contact.html">Hire
-                        me</a>
+            <div
+              class="col-md-4"
+              data-aos="fade-up"
+              data-aos-duration="900"
+              data-aos-offset="100px"
+              data-aos-delay="400"
+            >
+              <div class="card special-skill-item border-0">
+                <div class="card-header bg-transparent border-0">
+                  <i class="icon ion-ios-gear-outline"></i>
                 </div>
+                <div class="card-body">
+                  <h3 class="card-title">Problem Solving</h3>
+                  <p class="card-text">
+                    Every problem is a new challange.
+                  </p>
+                </div>
+              </div>
             </div>
-        </section>
-        <section class="portfolio-block skills">
-            <div class="container">
-                <div class="pulse animated heading">
-                    <h2>Special Skills</h2>
-                </div>
-                <div class="row">
-                    <div class="col-md-4" data-aos="fade-up" data-aos-duration="900" data-aos-offset="100px"
-                        data-aos-delay="200">
-                        <div class="card special-skill-item border-0">
-                            <div class="card-header bg-transparent border-0"><i class="icon ion-ios-star-outline"></i></div>
-                            <div class="card-body">
-                                <h3 class="card-title">Web Design</h3>
-                                <p class="card-text">I think that a good design is a must have these days.&nbsp;</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" data-aos="fade-up" data-aos-duration="900" data-aos-offset="100px"
-                        data-aos-delay="300">
-                        <div class="card special-skill-item border-0">
-                            <div class="card-header bg-transparent border-0"><i class="icon ion-ios-lightbulb-outline"></i></div>
-                            <div class="card-body">
-                                <h3 class="card-title">Interface Design</h3>
-                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo
-                                    odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
-                                    gravida at eget metus.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4" data-aos="fade-up" data-aos-duration="900" data-aos-offset="100px"
-                        data-aos-delay="400">
-                        <div class="card special-skill-item border-0">
-                            <div class="card-header bg-transparent border-0"><i class="icon ion-ios-gear-outline"></i></div>
-                            <div class="card-body">
-                                <h3 class="card-title">Photography and Print</h3>
-                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo
-                                    odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
-                                    gravida at eget metus.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+          </div>
+        </div>
+      </section>
     </main>
     <!-- <section class="portfolio-block website gradient">
         <div class="container">
@@ -131,8 +186,7 @@
     <script src="assets/js/script.min.js"></script>
     <script src="assets/js/include.js"></script>
     <script>
-        includeHTML();
+      includeHTML();
     </script>
-</body>
-
+  </body>
 </html>
