@@ -1,197 +1,834 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stefano Campagna — BI Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal: #0d9488;
+      --teal-light: #14b8a8;
+      --teal-dark: #0f766e;
+      --bg: #0a0f0e;
+      --surface: #111a18;
+      --surface2: #182420;
+      --border: #1e2e2b;
+      --text: #e2ede9;
+      --muted: #7a9e97;
+      --font: 'IBM Plex Sans', sans-serif;
+      --mono: 'IBM Plex Mono', monospace;
+    }
 
-    <title>Home • Stefano Campagna</title>
-    <link rel="icon" href="assets/img/icons/favicon-home.ico" />
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css"
-    />
-    <!-- Hotjar Tracking Code for stefanocampagna.it -->
-    <script>
-      (function(h, o, t, j, a, r) {
-        h.hj =
-          h.hj ||
-          function() {
-            (h.hj.q = h.hj.q || []).push(arguments);
-          };
-        h._hjSettings = { hjid: 1046361, hjsv: 6 };
-        a = o.getElementsByTagName("head")[0];
-        r = o.createElement("script");
-        r.async = 1;
-        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-        a.appendChild(r);
-      })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
-    </script>
-  </head>
-  <body>
-    <nav
-      class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient"
-    >
-      <div class="container">
-        <a class="navbar-brand logo" href="index.html">Stefano Campagna</a
-        ><button
-          class="navbar-toggler"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-        >
-          <span class="sr-only">Toggle navigation</span
-          ><span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item" role="presentation">
-              <a class="nav-link active" href="index.html">Home</a>
-            </li>
-            <!-- <li class="nav-item" role="presentation"><a class="nav-link" href="projects-grid-cards.html">Projects</a></li> -->
-            <li class="nav-item" role="presentation">
-              <a class="nav-link" href="cv.html">CV</a>
-            </li>
-            <li class="nav-item" role="presentation">
-              <a class="nav-link" href="contact.html">Contact</a>
-            </li>
-          </ul>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(10, 15, 14, 0.8);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      color: var(--teal);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--teal-light); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 40%, rgba(13,148,136,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 70%, rgba(13,148,136,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+    }
+
+    .hero-tag {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--teal);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--teal);
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.2rem;
+    }
+
+    h1 span { color: var(--teal); }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: #fff;
+      border: 1px solid var(--teal);
+    }
+
+    .btn-primary:hover {
+      background: var(--teal-light);
+      border-color: var(--teal-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      color: var(--text);
+      border-color: var(--muted);
+      transform: translateY(-1px);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--surface); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    .about-text strong { color: var(--text); }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--teal);
+      font-family: var(--mono);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── EXPERIENCE ── */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--teal), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.4rem;
+      top: 8px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--teal);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 3px rgba(13,148,136,0.2);
+    }
+
+    .timeline-item.current::before {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(13,148,136,0.2); }
+      50% { box-shadow: 0 0 0 6px rgba(13,148,136,0.1); }
+    }
+
+    .job-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .job-role {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .job-period {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--teal);
+      background: rgba(13,148,136,0.1);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .job-company {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .job-company a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .job-company a:hover {
+      color: var(--teal-light);
+      border-color: var(--teal-light);
+    }
+
+    .job-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .job-bullets li {
+      font-size: 0.875rem;
+      color: var(--muted);
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .job-bullets li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+    }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--surface); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .skill-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem 1.4rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .skill-card:hover {
+      border-color: var(--teal);
+      transform: translateY(-2px);
+    }
+
+    .skill-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--teal-light);
+      background: rgba(13,148,136,0.1);
+      border: 1px solid rgba(13,148,136,0.2);
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.8rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    .edu-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(13,148,136,0.12);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .edu-school {
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .edu-degree {
+      font-size: 0.85rem;
+      color: var(--teal);
+      margin-bottom: 0.2rem;
+    }
+
+    .edu-period {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .edu-text {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── CERTS ── */
+    .certs-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .cert-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.8rem 1.2rem;
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+
+    .cert-badge:hover { border-color: var(--teal); }
+
+    .cert-badge-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .cert-badge-issuer {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ── EXTRA ── */
+    #extra { background: var(--surface); }
+
+    .extra-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .extra-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.4rem;
+    }
+
+    .extra-card-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--teal);
+      margin-bottom: 0.8rem;
+      font-family: var(--mono);
+    }
+
+    .extra-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .extra-item {
+      font-size: 0.875rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .extra-item::before {
+      content: '·';
+      color: var(--teal);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-family: var(--mono);
+    }
+
+    footer a {
+      color: var(--teal);
+      text-decoration: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .extra-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      nav .nav-links { display: none; }
+      .edu-card { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#hero">SC.dev</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#extra">Extra</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Disponibile per nuove opportunità</div>
+    <h1>Stefano<br><span>Campagna</span></h1>
+    <p class="hero-subtitle">
+      Business Intelligence Developer &amp; Data Management Specialist.<br>
+      9+ anni nel settore IT — da Full‑Stack Developer al mondo dei dati.
+    </p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://www.linkedin.com/in/stefanocampagna96/" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        LinkedIn
+      </a>
+      <a class="btn btn-ghost" href="#experience">Scopri il mio percorso</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">Chi sono</div>
+    <h2 class="section-title">About me</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          Sono un <strong>Business Intelligence Developer &amp; Data Management Specialist</strong>
+          con un background da <strong>Full‑Stack Developer</strong> e oltre
+          <strong>9 anni di esperienza nel settore IT</strong>.
+        </p>
+        <br>
+        <p>
+          Dopo una solida esperienza nello sviluppo full‑stack, ho orientato il mio percorso
+          verso il mondo della BI e della gestione dei dati, spinto dalla passione per
+          l'analisi e il miglioramento dei processi decisionali. Sempre curioso, orientato
+          alla crescita continua e aperto a nuove sfide professionali.
+        </p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">9+</div>
+          <div class="stat-label">Anni di esperienza</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">BI</div>
+          <div class="stat-label">Focus attuale</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">FS</div>
+          <div class="stat-label">Background Full‑Stack</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">2</div>
+          <div class="stat-label">Lingue straniere</div>
         </div>
       </div>
-    </nav>
-    <main class="page lanidng-page">
-      <section class="portfolio-block block-intro">
-        <div class="container" data-aos="fade-down" data-aos-delay="50">
-          <div
-            class="avatar"
-            style='background-image:url("assets/img/avatars/avatar-cartoon.png");'
-          ></div>
-          <div class="about-me">
-            <p>
-              Hello! I am <strong>Stefano Campagna</strong>.&nbsp;<br />I work
-              as Full Stack Developer.&nbsp;<br />I have passion for technology,
-              food and web.
-            </p>
-            <a class="btn btn-outline-primary" role="button" href="contact.html"
-              >Hire me</a
-            >
-            <a class="btn btn-outline-primary" role="button" href="cv.html"
-              >Curriculum</a
-            >
-          </div>
-        </div>
-      </section>
-      <section
-        class="portfolio-block skills"
-        style="padding-top:0"
-        data-aos="fade-up"
-        data-aos-duration="900"
-        data-aos-offset="100px"
-        data-aos-delay="200"
-      >
-        <div class="container">
-          <div class="pulse animated heading">
-            <h2>Special Skills</h2>
-          </div>
-          <div class="row">
-            <div
-              class="col-md-4"
-              data-aos="fade-up"
-              data-aos-duration="900"
-              data-aos-offset="100px"
-              data-aos-delay="200"
-            >
-              <div class="card special-skill-item border-0">
-                <div class="card-header bg-transparent border-0">
-                  <i class="icon ion-ios-star-outline"></i>
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Web Design</h3>
-                  <p class="card-text">
-                    I think that a good design is a must have these days.&nbsp;
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              class="col-md-4"
-              data-aos="fade-up"
-              data-aos-duration="900"
-              data-aos-offset="100px"
-              data-aos-delay="300"
-            >
-              <div class="card special-skill-item border-0">
-                <div class="card-header bg-transparent border-0">
-                  <i class="icon ion-ios-heart-outline"></i>
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Love what I do</h3>
-                  <p class="card-text">
-                    I think that loving what you are doing is the secret.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              class="col-md-4"
-              data-aos="fade-up"
-              data-aos-duration="900"
-              data-aos-offset="100px"
-              data-aos-delay="400"
-            >
-              <div class="card special-skill-item border-0">
-                <div class="card-header bg-transparent border-0">
-                  <i class="icon ion-ios-gear-outline"></i>
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Problem Solving</h3>
-                  <p class="card-text">
-                    Every problem is a new challange.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-    <!-- <section class="portfolio-block website gradient">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-12 col-lg-5 offset-lg-1 text">
-                    <h3>Website Project</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget velit ultricies, feugiat
-                        est sed, efr nunc, vivamus vel accumsan dui. Quisque ac dolor cursus, volutpat nisl vel,
-                        porttitor eros.</p>
-                </div>
-                <div class="col-md-12 col-lg-5">
-                    <div class="portfolio-laptop-mockup">
-                        <div class="screen">
-                            <div class="screen-content" style="background-image:url(&quot;assets/img/tech/image6.png&quot;);"></div>
-                        </div>
-                        <div class="keyboard"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <div w3-include-html="static/footer.html"></div>
+    </div>
+  </div>
+</section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
-    <script src="assets/js/script.min.js"></script>
-    <script src="assets/js/include.js"></script>
-    <script>
-      includeHTML();
-    </script>
-  </body>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">Carriera</div>
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+
+      <div class="timeline-item current">
+        <div class="job-header">
+          <div class="job-role">BI Developer &amp; Data Management</div>
+          <div class="job-period">Mar 2024 → Attuale</div>
+        </div>
+        <div class="job-company"><a href="https://www.scania.com/it" target="_blank" rel="noopener">Scania Italia</a></div>
+        <ul class="job-bullets">
+          <li>Gestione e amministrazione dell'infrastruttura <strong>QlikView Server</strong></li>
+          <li>Sviluppo e manutenzione di dashboard e applicazioni QlikView per i vari dipartimenti</li>
+          <li>Creazione di viste logiche e query complesse in <strong>SQL Server</strong></li>
+          <li>Iniziative di <strong>data mining e data preparation</strong> con focus su qualità dei dati</li>
+          <li>Automazione di report schedulati con distribuzione automatica</li>
+          <li>Interazione con stakeholder per raccolta requisiti e proposta di soluzioni scalabili</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div class="job-role">Full Stack Developer</div>
+          <div class="job-period">Feb 2016 → Feb 2024</div>
+        </div>
+        <div class="job-company"><a href="https://www.scania.com/it" target="_blank" rel="noopener">Scania Italia</a></div>
+        <ul class="job-bullets">
+          <li>Sviluppatore principale di una <strong>piattaforma di pianificazione manutenzioni</strong> per officine Scania</li>
+          <li>Sviluppo end‑to‑end con <strong>Java, SQL, JSP, JavaScript, Bootstrap, jQuery</strong></li>
+          <li>Progettazione e implementazione di <strong>API REST in Java</strong></li>
+          <li>Esperienza su <strong>Apache Kafka</strong> e <strong>Spring Boot</strong> per microservizi scalabili</li>
+          <li>Monitoraggio con <strong>Grafana, Loki e Jaeger</strong></li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="job-header">
+          <div class="job-role">Stagista IT</div>
+          <div class="job-period">Giu 2014 → Lug 2014</div>
+        </div>
+        <div class="job-company"><a href="https://www.unifarm.it/" target="_blank" rel="noopener">Unifarm S.p.A.</a></div>
+        <ul class="job-bullets">
+          <li>Manutenzione infrastruttura di rete: sostituzione e configurazione di router e access point</li>
+          <li>Interventi hardware presso farmacie del Triveneto</li>
+          <li>Gestione inventario, magazzino e spedizione attrezzature IT</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Competenze</div>
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-name">Business Intelligence</div>
+        <div class="skill-tags">
+          <span class="tag">QlikView</span>
+          <span class="tag">PowerBI</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">Database</div>
+        <div class="skill-tags">
+          <span class="tag">SQL Server</span>
+          <span class="tag">IBM DB2</span>
+          <span class="tag">MySQL</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">Backend</div>
+        <div class="skill-tags">
+          <span class="tag">Java EE</span>
+          <span class="tag">Spring Boot</span>
+          <span class="tag">REST API</span>
+          <span class="tag">Apache Kafka</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">Frontend</div>
+        <div class="skill-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Bootstrap</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">Infrastruttura</div>
+        <div class="skill-tags">
+          <span class="tag">Docker</span>
+          <span class="tag">Grafana</span>
+          <span class="tag">Loki</span>
+          <span class="tag">Jaeger</span>
+          <span class="tag">QlikView Server</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-name">Dev Tools</div>
+        <div class="skill-tags">
+          <span class="tag">Postman</span>
+          <span class="tag">Git</span>
+          <span class="tag">Linux</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-label">Formazione</div>
+    <h2 class="section-title">Education</h2>
+
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-school">I.T.T. Guglielmo Marconi — Rovereto</div>
+        <div class="edu-degree">Diploma in Informatica</div>
+        <div class="edu-period">2010 → 2015</div>
+        <div class="edu-text">
+          Solide basi di programmazione OOP con <strong>C#</strong> e gestione di basi di dati relazionali con <strong>MySQL</strong>.
+          Studente selezionato dalla Provincia per un viaggio di studio a Londra in riconoscimento dell'eccellenza accademica.
+        </div>
+      </div>
+    </div>
+
+    <div class="certs-row">
+      <a class="cert-badge" href="https://www.aicanet.it/it-administrator/moduli?artid=180741" target="_blank" rel="noopener">
+        <span style="font-size:1.2rem">📜</span>
+        <div>
+          <div class="cert-badge-title">EUCIP</div>
+          <div class="cert-badge-issuer">AICA — Moduli 1 &amp; 2</div>
+        </div>
+      </a>
+      <a class="cert-badge" href="https://new.marconirovereto.it" target="_blank" rel="noopener">
+        <span style="font-size:1.2rem">📜</span>
+        <div>
+          <div class="cert-badge-title">ECDL</div>
+          <div class="cert-badge-issuer">I.T.T. G. Marconi — Moduli 1‑7</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EXTRA -->
+<section id="extra">
+  <div class="container">
+    <div class="section-label">Altro</div>
+    <h2 class="section-title">Lingue &amp; Interessi</h2>
+    <div class="extra-grid">
+      <div class="extra-card">
+        <div class="extra-card-title">Lingue</div>
+        <div class="extra-items">
+          <div class="extra-item">Italiano — Madrelingua</div>
+          <div class="extra-item">Inglese — Buono</div>
+          <div class="extra-item">Bosniaco — Base</div>
+        </div>
+      </div>
+      <div class="extra-card">
+        <div class="extra-card-title">Sport</div>
+        <div class="extra-items">
+          <div class="extra-item">Judo</div>
+          <div class="extra-item">Formula 1</div>
+          <div class="extra-item">Calcio</div>
+        </div>
+      </div>
+      <div class="extra-card">
+        <div class="extra-card-title">Tecnologia</div>
+        <div class="extra-items">
+          <div class="extra-item">Linux</div>
+          <div class="extra-item">Assemblaggio PC</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>
+    Stefano Campagna —
+    <a href="https://www.linkedin.com/in/stefanocampagna96/" target="_blank" rel="noopener">LinkedIn</a>
+    · roveretano.it
+  </p>
+</footer>
+
+</body>
 </html>
