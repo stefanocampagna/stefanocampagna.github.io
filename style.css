@@ -8,8 +8,19 @@
   --border: #1e2e2b;
   --text: #e2ede9;
   --muted: #7a9e97;
+  --nav-bg: rgba(10, 15, 14, 0.85);
   --font: 'IBM Plex Sans', sans-serif;
   --mono: 'IBM Plex Mono', monospace;
+}
+
+[data-theme="light"] {
+  --bg: #f4faf8;
+  --surface: #ffffff;
+  --surface2: #eaf4f1;
+  --border: #c8e0da;
+  --text: #0d2420;
+  --muted: #4d7a72;
+  --nav-bg: rgba(244, 250, 248, 0.9);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,7 +42,7 @@ nav {
   width: 100%;
   z-index: 100;
   backdrop-filter: blur(12px);
-  background: rgba(10, 15, 14, 0.8);
+  background: var(--nav-bg);
   border-bottom: 1px solid var(--border);
   padding: 0 2rem;
   display: flex;
@@ -64,6 +75,29 @@ nav {
 }
 
 .nav-links a:hover { color: var(--teal-light); }
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.35rem 0.45rem;
+  cursor: pointer;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  color: var(--teal-light);
+  border-color: var(--teal);
+}
+
+.icon-moon { display: none; }
+[data-theme="light"] .icon-moon { display: block; }
+[data-theme="light"] .icon-sun  { display: none; }
 
 /* ── HERO ── */
 #hero {
