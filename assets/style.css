@@ -615,6 +615,30 @@ footer {
   font-family: var(--mono);
 }
 
+.footer-now {
+  max-width: 520px;
+  margin: 0 auto 2rem;
+  padding: 1.4rem 1.6rem 1.6rem;
+  border-top: 1px solid var(--border);
+  text-align: left;
+}
+
+.footer-now-title {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 0.9rem;
+}
+
+.footer-now p {
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: var(--muted);
+  font-family: var(--font);
+  opacity: 0.85;
+}
+
 footer a {
   color: var(--teal);
   text-decoration: none;
