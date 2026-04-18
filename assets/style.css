@@ -1,14 +1,27 @@
+/*
+  VARIANTE EDITORIALE CHIARA — per provarla, sostituisci i valori in [data-theme="light"] con questi:
+  --bg: #faf8f3;
+  --surface: #f2efe8;
+  --surface2: #e8e4da;
+  --border: #d0c9bb;
+  --text: #1a1a1a;
+  --muted: #5a5449;
+  --nav-bg: rgba(250, 248, 243, 0.9);
+  Accento verde bottiglia: --teal: #1e4d3e; --teal-light: #2d7a62; --teal-dark: #143529;
+*/
+
 :root {
-  --teal: #0d9488;
-  --teal-light: #14b8a8;
-  --teal-dark: #0f766e;
-  --bg: #0a0f0e;
-  --surface: #111a18;
-  --surface2: #182420;
-  --border: #1e2e2b;
+  --teal: #0f7b6c;
+  --teal-light: #22c4aa;
+  --teal-dark: #0a5c50;
+  --amber: #d4a574;
+  --bg: #0a1210;
+  --surface: #0f1c1a;
+  --surface2: #162421;
+  --border: #1a2d29;
   --text: #e2ede9;
   --muted: #7a9e97;
-  --nav-bg: rgba(10, 15, 14, 0.85);
+  --nav-bg: rgba(10, 18, 16, 0.85);
   --font: 'IBM Plex Sans', sans-serif;
   --font-display: 'Instrument Serif', Georgia, serif;
   --mono: 'IBM Plex Mono', monospace;
@@ -115,8 +128,8 @@ nav {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 50% at 70% 40%, rgba(13,148,136,0.12) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 40% at 20% 70%, rgba(13,148,136,0.06) 0%, transparent 60%);
+    radial-gradient(ellipse 60% 50% at 70% 40%, rgba(15,123,108,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 20% 70%, rgba(15,123,108,0.06) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -147,7 +160,7 @@ nav {
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--teal);
-  box-shadow: 0 0 0 6px rgba(13,148,136,0.1);
+  box-shadow: 0 0 0 6px rgba(15,123,108,0.1);
 }
 
 .hero-tag {
@@ -341,16 +354,18 @@ section {
   border-radius: 50%;
   background: var(--teal);
   border: 2px solid var(--bg);
-  box-shadow: 0 0 0 3px rgba(13,148,136,0.2);
+  box-shadow: 0 0 0 3px rgba(15,123,108,0.2);
 }
 
 .timeline-item.current::before {
-  animation: pulse 2s infinite;
+  background: var(--amber);
+  box-shadow: 0 0 0 3px rgba(212,165,116,0.2);
+  animation: pulse 3s infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 3px rgba(13,148,136,0.2); }
-  50% { box-shadow: 0 0 0 6px rgba(13,148,136,0.1); }
+  0%, 100% { box-shadow: 0 0 0 3px rgba(212,165,116,0.2); }
+  50% { box-shadow: 0 0 0 7px rgba(212,165,116,0.07); }
 }
 
 .job-header {
@@ -371,7 +386,7 @@ section {
   font-family: var(--mono);
   font-size: 0.75rem;
   color: var(--teal);
-  background: rgba(13,148,136,0.1);
+  background: rgba(15,123,108,0.1);
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
   white-space: nowrap;
@@ -391,8 +406,8 @@ section {
 }
 
 .job-company a:hover {
-  color: var(--teal-light);
-  border-color: var(--teal-light);
+  color: var(--text);
+  border-color: var(--amber);
 }
 
 .job-bullets {
@@ -458,8 +473,8 @@ section {
   font-family: var(--mono);
   font-size: 0.72rem;
   color: var(--teal-light);
-  background: rgba(13,148,136,0.1);
-  border: 1px solid rgba(13,148,136,0.2);
+  background: rgba(15,123,108,0.1);
+  border: 1px solid rgba(15,123,108,0.2);
   padding: 0.2rem 0.55rem;
   border-radius: 4px;
 }
@@ -479,7 +494,7 @@ section {
 .edu-icon {
   width: 44px;
   height: 44px;
-  background: rgba(13,148,136,0.12);
+  background: rgba(15,123,108,0.12);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -683,7 +698,7 @@ footer a {
 .form-group input:focus,
 .form-group textarea:focus {
   border-color: var(--teal);
-  box-shadow: 0 0 0 3px rgba(13,148,136,0.1);
+  box-shadow: 0 0 0 3px rgba(15,123,108,0.1);
 }
 
 .form-group input[aria-invalid="true"],
@@ -713,8 +728,8 @@ footer a {
 
 [data-fs-success][data-fs-active] {
   display: block !important;
-  background: rgba(13,148,136,0.1) !important;
-  border: 1px solid rgba(13,148,136,0.3) !important;
+  background: rgba(15,123,108,0.1) !important;
+  border: 1px solid rgba(15,123,108,0.3) !important;
   border-radius: 8px !important;
   padding: 1rem 1.2rem !important;
   color: var(--teal-light) !important;
@@ -734,8 +749,8 @@ footer a {
 }
 
 .cert-badge--featured {
-  border-color: rgba(13,148,136,0.35);
-  background: rgba(13,148,136,0.06);
+  border-color: rgba(15,123,108,0.35);
+  background: rgba(15,123,108,0.06);
 }
 
 .certs-row--secondary {
@@ -758,8 +773,8 @@ footer a {
 .cert-wip {
   font-size: 0.65rem;
   color: var(--teal);
-  background: rgba(13,148,136,0.1);
-  border: 1px solid rgba(13,148,136,0.2);
+  background: rgba(15,123,108,0.1);
+  border: 1px solid rgba(15,123,108,0.2);
   padding: 0.1rem 0.4rem;
   border-radius: 3px;
   font-family: var(--mono);
