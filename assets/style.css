@@ -23,8 +23,8 @@
   --muted: #7a9e97;
   --nav-bg: rgba(10, 18, 16, 0.85);
   --font: 'IBM Plex Sans', sans-serif;
-  --font-display: 'Instrument Serif', Georgia, serif;
-  --mono: 'IBM Plex Mono', monospace;
+  --font-display: 'JetBrains Mono', monospace;
+  --mono: 'JetBrains Mono', monospace;
 }
 
 [data-theme="light"] {
@@ -68,7 +68,7 @@ nav {
 .nav-logo {
   font-family: var(--mono);
   font-size: 0.9rem;
-  color: var(--teal);
+  color: var(--amber);
   text-decoration: none;
   letter-spacing: 0.04em;
 }
@@ -128,7 +128,7 @@ nav {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 50% at 70% 40%, rgba(15,123,108,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 70% 40%, rgba(212,165,116,0.08) 0%, transparent 70%),
     radial-gradient(ellipse 40% 40% at 20% 70%, rgba(15,123,108,0.06) 0%, transparent 60%);
   pointer-events: none;
 }
@@ -166,7 +166,7 @@ nav {
 .hero-tag {
   font-family: var(--mono);
   font-size: 0.8rem;
-  color: var(--teal);
+  color: var(--amber);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-bottom: 1.2rem;
@@ -180,22 +180,19 @@ nav {
   display: block;
   width: 2rem;
   height: 1px;
-  background: var(--teal);
+  background: var(--amber);
 }
 
 h1 {
   font-family: var(--font-display);
-  font-size: clamp(3.2rem, 8vw, 6rem);
-  font-weight: 400;
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 700;
   line-height: 1.05;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   margin-bottom: 1.2rem;
 }
 
-h1 span {
-  color: var(--teal);
-  font-style: italic;
-}
+h1 span { color: var(--amber); }
 
 .hero-subtitle {
   font-size: 1.15rem;
@@ -261,7 +258,7 @@ section {
 .section-label {
   font-family: var(--mono);
   font-size: 0.75rem;
-  color: var(--teal);
+  color: var(--amber);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   margin-bottom: 0.4rem;
@@ -269,10 +266,10 @@ section {
 
 .section-title {
   font-family: var(--font-display);
-  font-size: 2.4rem;
-  font-weight: 400;
+  font-size: 2rem;
+  font-weight: 700;
   margin-bottom: 3rem;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   line-height: 1.08;
 }
 
@@ -310,7 +307,7 @@ section {
 .stat-number {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--teal);
+  color: var(--amber);
   font-family: var(--mono);
   line-height: 1;
 }
@@ -326,7 +323,7 @@ section {
 /* ── EXPERIENCE ── */
 .timeline {
   position: relative;
-  padding-left: 2rem;
+  padding-left: 2.5rem;
 }
 
 .timeline::before {
@@ -335,8 +332,8 @@ section {
   left: 0;
   top: 8px;
   bottom: 0;
-  width: 1px;
-  background: linear-gradient(to bottom, var(--teal), transparent);
+  width: 2px;
+  background: linear-gradient(to bottom, var(--amber), transparent 85%);
 }
 
 .timeline-item {
@@ -347,25 +344,29 @@ section {
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: -2.4rem;
-  top: 8px;
-  width: 9px;
-  height: 9px;
+  left: calc(-2.5rem - 6px);
+  top: 4px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: var(--teal);
   border: 2px solid var(--bg);
-  box-shadow: 0 0 0 3px rgba(15,123,108,0.2);
+  box-shadow: 0 0 0 4px rgba(15,123,108,0.2);
 }
 
 .timeline-item.current::before {
   background: var(--amber);
-  box-shadow: 0 0 0 3px rgba(212,165,116,0.2);
+  width: 14px;
+  height: 14px;
+  left: calc(-2.5rem - 7px);
+  top: 3px;
+  box-shadow: 0 0 0 4px rgba(212,165,116,0.25);
   animation: pulse 3s infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 3px rgba(212,165,116,0.2); }
-  50% { box-shadow: 0 0 0 7px rgba(212,165,116,0.07); }
+  0%, 100% { box-shadow: 0 0 0 4px rgba(212,165,116,0.25); }
+  50% { box-shadow: 0 0 0 8px rgba(212,165,116,0.07); }
 }
 
 .job-header {
@@ -435,7 +436,7 @@ section {
   content: '›';
   position: absolute;
   left: 0;
-  color: var(--teal);
+  color: var(--amber);
 }
 
 /* ── SKILLS ── */
@@ -515,7 +516,7 @@ section {
 
 .edu-degree {
   font-size: 0.85rem;
-  color: var(--teal);
+  color: var(--amber);
   margin-bottom: 0.2rem;
 }
 
@@ -585,7 +586,7 @@ section {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--teal);
+  color: var(--amber);
   margin-bottom: 0.8rem;
   font-family: var(--mono);
 }
@@ -606,7 +607,7 @@ section {
 
 .extra-item::before {
   content: '·';
-  color: var(--teal);
+  color: var(--amber);
   font-size: 1.2rem;
   line-height: 1;
 }
@@ -633,7 +634,7 @@ footer {
   font-size: 0.68rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--amber);
   margin-bottom: 0.9rem;
 }
 
