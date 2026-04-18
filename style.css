@@ -647,19 +647,20 @@ footer a {
   margin-bottom: 0.5rem;
 }
 
-.fs-success-msg {
-  display: none;
-  background: rgba(13,148,136,0.08);
-  border: 1px solid rgba(13,148,136,0.25);
-  border-radius: 8px;
-  padding: 1rem 1.2rem;
-  color: var(--teal-light);
-  font-size: 0.9rem;
+[data-fs-success][data-fs-active] {
+  display: block !important;
+  background: rgba(13,148,136,0.1) !important;
+  border: 1px solid rgba(13,148,136,0.3) !important;
+  border-radius: 8px !important;
+  padding: 1rem 1.2rem !important;
+  color: var(--teal-light) !important;
+  font-size: 0.9rem !important;
   margin-bottom: 1rem;
+  font-family: var(--mono);
 }
 
-[data-fs-success][aria-hidden="false"] .fs-success-msg {
-  display: block;
+[data-fs-success][data-fs-active] ~ form {
+  display: none;
 }
 
 [data-fs-submit-btn]:disabled {
