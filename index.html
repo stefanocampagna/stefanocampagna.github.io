@@ -444,6 +444,34 @@
 
 
 <script>
+  (function() {
+    var mesi = {
+      'Gen':0,'Feb':1,'Mar':2,'Apr':3,'Mag':4,'Giu':5,
+      'Lug':6,'Ago':7,'Set':8,'Ott':9,'Nov':10,'Dic':11
+    };
+    function parseDate(s) {
+      if (s === 'Attuale') return new Date();
+      var p = s.split(' ');
+      return new Date(parseInt(p[1]), mesi[p[0]] || 0, 1);
+    }
+    function fmt(months) {
+      var y = Math.floor(months / 12), m = months % 12;
+      if (y === 0) return m + (m === 1 ? ' mese' : ' mesi');
+      if (m === 0) return y + (y === 1 ? ' anno' : ' anni');
+      return y + (y === 1 ? ' anno' : ' anni') + ' e ' + m + (m === 1 ? ' mese' : ' mesi');
+    }
+    document.querySelectorAll('.job-period').forEach(function(el) {
+      var parts = el.textContent.split('→').map(function(s){ return s.trim(); });
+      if (parts.length !== 2) return;
+      var start = parseDate(parts[0]), end = parseDate(parts[1]);
+      var diff = (end.getFullYear() - start.getFullYear()) * 12 + end.getMonth() - start.getMonth();
+      if (diff <= 0) return;
+      el.insertAdjacentHTML('beforeend', '<span class="job-duration">(' + fmt(diff) + ')</span>');
+    });
+  })();
+</script>
+
+<script>
   console.log(
     '%c👋 Ciao!',
     'color:#22c4aa;font-size:1.4rem;font-weight:600;'

@@ -392,6 +392,12 @@ section {
   white-space: nowrap;
 }
 
+.job-duration {
+  font-size: 0.68rem;
+  opacity: 0.6;
+  margin-left: 0.35em;
+}
+
 .job-company {
   font-size: 0.85rem;
   color: var(--muted);
