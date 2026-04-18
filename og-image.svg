@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f0e"/>
+      <stop offset="100%" stop-color="#111a18"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="72%" cy="38%" r="45%">
+      <stop offset="0%" stop-color="#0d9488" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0d9488" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg-grad)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Left teal accent bar -->
+  <rect x="72" y="120" width="4" height="200" rx="2" fill="#0d9488"/>
+
+  <!-- Name -->
+  <text x="104" y="220" font-family="IBM Plex Sans, sans-serif" font-size="80" font-weight="700" fill="#e2ede9" letter-spacing="-2">Stefano</text>
+  <text x="104" y="310" font-family="IBM Plex Sans, sans-serif" font-size="80" font-weight="700" fill="#0d9488" letter-spacing="-2">Campagna</text>
+
+  <!-- Divider line -->
+  <line x1="104" y1="348" x2="600" y2="348" stroke="#1e2e2b" stroke-width="1"/>
+
+  <!-- Subtitle -->
+  <text x="104" y="392" font-family="IBM Plex Sans, sans-serif" font-size="26" font-weight="300" fill="#7a9e97" letter-spacing="0">Senior BI Developer &amp; Data Management Specialist</text>
+  <text x="104" y="428" font-family="IBM Plex Sans, sans-serif" font-size="22" font-weight="300" fill="#4d7a72">9+ anni di esperienza · QlikView · Power BI · SQL Server</text>
+
+  <!-- Domain badge -->
+  <rect x="104" y="480" width="256" height="40" rx="6" fill="#111a18" stroke="#1e2e2b" stroke-width="1"/>
+  <text x="124" y="506" font-family="IBM Plex Mono, monospace" font-size="17" fill="#0d9488">stefanocampagna.it</text>
+
+  <!-- Decorative right side dots grid -->
+  <g opacity="0.12">
+    <circle cx="900" cy="180" r="3" fill="#0d9488"/>
+    <circle cx="950" cy="180" r="3" fill="#0d9488"/>
+    <circle cx="1000" cy="180" r="3" fill="#0d9488"/>
+    <circle cx="1050" cy="180" r="3" fill="#0d9488"/>
+    <circle cx="1100" cy="180" r="3" fill="#0d9488"/>
+    <circle cx="900" cy="230" r="3" fill="#0d9488"/>
+    <circle cx="950" cy="230" r="3" fill="#0d9488"/>
+    <circle cx="1000" cy="230" r="3" fill="#0d9488"/>
+    <circle cx="1050" cy="230" r="3" fill="#0d9488"/>
+    <circle cx="1100" cy="230" r="3" fill="#0d9488"/>
+    <circle cx="900" cy="280" r="3" fill="#0d9488"/>
+    <circle cx="950" cy="280" r="3" fill="#0d9488"/>
+    <circle cx="1000" cy="280" r="3" fill="#0d9488"/>
+    <circle cx="1050" cy="280" r="3" fill="#0d9488"/>
+    <circle cx="1100" cy="280" r="3" fill="#0d9488"/>
+    <circle cx="900" cy="330" r="3" fill="#0d9488"/>
+    <circle cx="950" cy="330" r="3" fill="#0d9488"/>
+    <circle cx="1000" cy="330" r="3" fill="#0d9488"/>
+    <circle cx="1050" cy="330" r="3" fill="#0d9488"/>
+    <circle cx="1100" cy="330" r="3" fill="#0d9488"/>
+    <circle cx="900" cy="380" r="3" fill="#0d9488"/>
+    <circle cx="950" cy="380" r="3" fill="#0d9488"/>
+    <circle cx="1000" cy="380" r="3" fill="#0d9488"/>
+    <circle cx="1050" cy="380" r="3" fill="#0d9488"/>
+    <circle cx="1100" cy="380" r="3" fill="#0d9488"/>
+    <circle cx="900" cy="430" r="3" fill="#0d9488"/>
+    <circle cx="950" cy="430" r="3" fill="#0d9488"/>
+    <circle cx="1000" cy="430" r="3" fill="#0d9488"/>
+    <circle cx="1050" cy="430" r="3" fill="#0d9488"/>
+    <circle cx="1100" cy="430" r="3" fill="#0d9488"/>
+  </g>
+</svg>
