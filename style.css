@@ -541,6 +541,77 @@ footer a {
   text-decoration: none;
 }
 
+/* ── CONTACT ── */
+#contact { background: var(--surface); }
+
+.contact-form {
+  max-width: 620px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--mono);
+}
+
+.form-group input,
+.form-group textarea {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+  outline: none;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--teal);
+}
+
+.form-group textarea {
+  min-height: 140px;
+}
+
+.cert-wip {
+  font-size: 0.65rem;
+  color: var(--teal);
+  background: rgba(13,148,136,0.1);
+  border: 1px solid rgba(13,148,136,0.2);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-family: var(--mono);
+  vertical-align: middle;
+  margin-left: 0.3rem;
+}
+
+.footer-update {
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  opacity: 0.5;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 700px) {
   .about-grid { grid-template-columns: 1fr; }
@@ -548,4 +619,5 @@ footer a {
   .stats-grid { grid-template-columns: 1fr 1fr; }
   nav .nav-links { display: none; }
   .edu-card { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
 }
