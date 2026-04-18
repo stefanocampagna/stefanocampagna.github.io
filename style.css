@@ -703,6 +703,28 @@ footer a {
   transform: none;
 }
 
+.cert-badge--featured {
+  border-color: rgba(13,148,136,0.35);
+  background: rgba(13,148,136,0.06);
+}
+
+.certs-row--secondary {
+  margin-top: 0.6rem;
+}
+
+.cert-badge--secondary {
+  padding: 0.5rem 0.9rem;
+  opacity: 0.65;
+}
+
+.cert-badge--secondary .cert-badge-title {
+  font-size: 0.78rem;
+}
+
+.cert-badge--secondary .cert-badge-issuer {
+  font-size: 0.68rem;
+}
+
 .cert-wip {
   font-size: 0.65rem;
   color: var(--teal);
