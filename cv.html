@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV — Stefano Campagna</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal: #0d9488;
+      --teal-dark: #0f766e;
+      --text: #0d2420;
+      --muted: #4d7a72;
+      --border: #c8e0da;
+      --font: 'IBM Plex Sans', sans-serif;
+      --mono: 'IBM Plex Mono', monospace;
+    }
+
+    body {
+      font-family: var(--font);
+      color: var(--text);
+      background: #fff;
+      line-height: 1.5;
+      font-size: 10pt;
+    }
+
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2.4cm 2cm;
+    }
+
+    /* ── Header ── */
+    .cv-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid var(--teal);
+      padding-bottom: 1rem;
+      margin-bottom: 1.4rem;
+      gap: 1rem;
+    }
+
+    .cv-name { font-size: 24pt; font-weight: 700; letter-spacing: -0.5px; line-height: 1.1; }
+    .cv-name span { color: var(--teal); }
+    .cv-title { font-size: 10.5pt; color: var(--muted); margin-top: 0.25rem; font-weight: 400; }
+    .cv-contacts { text-align: right; font-size: 8.5pt; color: var(--muted); font-family: var(--mono); line-height: 1.8; }
+    .cv-contacts a { color: var(--teal); text-decoration: none; }
+
+    /* ── Sections ── */
+    .cv-section { margin-bottom: 1.4rem; }
+
+    .cv-section-title {
+      font-size: 7.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--teal);
+      font-family: var(--mono);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.3rem;
+      margin-bottom: 0.8rem;
+    }
+
+    /* ── Experience ── */
+    .exp-item { margin-bottom: 1rem; }
+    .exp-header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+    .exp-role { font-weight: 600; font-size: 10.5pt; }
+    .exp-period { font-family: var(--mono); font-size: 8pt; color: var(--muted); white-space: nowrap; }
+    .exp-company { font-size: 9pt; color: var(--muted); margin-bottom: 0.35rem; }
+    .exp-bullets { padding-left: 1rem; list-style: none; }
+    .exp-bullets li { position: relative; font-size: 9pt; color: #2a4a44; line-height: 1.55; margin-bottom: 0.2rem; padding-left: 0.8rem; }
+    .exp-bullets li::before { content: '›'; position: absolute; left: 0; color: var(--teal); }
+
+    /* ── Skills ── */
+    .skills-table { width: 100%; border-collapse: collapse; }
+    .skills-table td { padding: 0.25rem 0.6rem 0.25rem 0; vertical-align: top; font-size: 9pt; }
+    .skills-table td:first-child { font-weight: 600; color: var(--text); white-space: nowrap; width: 28%; font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.04em; padding-top: 0.3rem; }
+    .skills-table td:last-child { color: var(--muted); font-family: var(--mono); font-size: 8.5pt; }
+
+    /* ── Education ── */
+    .edu-item { margin-bottom: 0.8rem; }
+    .edu-school { font-weight: 600; font-size: 10pt; }
+    .edu-degree { font-size: 9pt; color: var(--teal); }
+    .edu-period { font-family: var(--mono); font-size: 8pt; color: var(--muted); }
+    .edu-text { font-size: 8.5pt; color: var(--muted); margin-top: 0.25rem; line-height: 1.5; }
+
+    .cert-list { list-style: none; display: flex; flex-direction: column; gap: 0.2rem; }
+    .cert-list li { font-size: 9pt; color: var(--muted); padding-left: 0.8rem; position: relative; }
+    .cert-list li::before { content: '›'; position: absolute; left: 0; color: var(--teal); }
+    .cert-wip { font-size: 7.5pt; color: var(--teal); background: rgba(13,148,136,0.1); padding: 0.05rem 0.3rem; border-radius: 3px; font-family: var(--mono); vertical-align: middle; margin-left: 0.3rem; }
+
+    /* ── Languages & Extra ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .extra-list { list-style: none; }
+    .extra-list li { font-size: 9pt; color: var(--muted); line-height: 1.7; }
+
+    /* ── Print ── */
+    @media print {
+      body { font-size: 10pt; }
+      .page { padding: 1.8cm 1.8cm; max-width: 100%; }
+      .no-print { display: none; }
+      a { color: inherit; }
+    }
+
+    .print-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--teal);
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+    @media print { .print-btn { display: none; } }
+  </style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">Stampa / Salva PDF</button>
+
+<div class="page">
+
+  <header class="cv-header">
+    <div>
+      <div class="cv-name">Stefano <span>Campagna</span></div>
+      <div class="cv-title">Senior Business Intelligence Developer &amp; Data Management Specialist</div>
+    </div>
+    <div class="cv-contacts">
+      <a href="mailto:stefano.campagna.1996@gmail.com">stefano.campagna.1996@gmail.com</a><br>
+      <a href="https://stefanocampagna.it" target="_blank">stefanocampagna.it</a><br>
+      <a href="https://www.linkedin.com/in/stefanocampagna96/" target="_blank">linkedin.com/in/stefanocampagna96</a><br>
+      Rovereto, TN — Italia
+    </div>
+  </header>
+
+  <!-- ESPERIENZA -->
+  <div class="cv-section">
+    <div class="cv-section-title">Esperienza Professionale</div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-role">BI Developer &amp; Data Management</div>
+        <div class="exp-period">Mar 2024 → Attuale</div>
+      </div>
+      <div class="exp-company">Scania Italia — Trento</div>
+      <ul class="exp-bullets">
+        <li>Gestione e amministrazione dell'infrastruttura <strong>QlikView Server</strong></li>
+        <li>Sviluppo e manutenzione di [~N] applicazioni BI in produzione, usate da [~N] utenti interni (Sales, After Sales, Logistica, Finance) e [~N] esterni (concessionari, venditori)</li>
+        <!-- PLACEHOLDER: sostituire [~N] con i numeri reali di applicazioni e utenti -->
+        <li>Creazione di viste logiche e query complesse in <strong>SQL Server</strong> su [~N] sorgenti dati eterogenee</li>
+        <!-- PLACEHOLDER: numero sorgenti dati -->
+        <li>Iniziative di <strong>data mining e data preparation</strong> con focus su qualità dei dati</li>
+        <li>Automazione di report schedulati con distribuzione automatica verso utenti interni ed esterni</li>
+        <li>Raccolta requisiti da stakeholder e proposta di soluzioni scalabili</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-role">Full Stack Developer</div>
+        <div class="exp-period">Feb 2016 → Feb 2024 (8 anni)</div>
+      </div>
+      <div class="exp-company">Scania Italia — Trento</div>
+      <ul class="exp-bullets">
+        <li>Sviluppatore principale di una <strong>piattaforma di pianificazione manutenzioni</strong> per officine Scania</li>
+        <li>Sviluppo end-to-end con <strong>Java, SQL, JSP, JavaScript, Bootstrap, jQuery</strong></li>
+        <li>Progettazione e implementazione di <strong>API REST in Java</strong></li>
+        <li>Esperienza su <strong>Apache Kafka</strong> e <strong>Spring Boot</strong> per microservizi scalabili</li>
+        <li>Monitoraggio con <strong>Grafana, Loki e Jaeger</strong></li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div class="exp-role">Stagista IT</div>
+        <div class="exp-period">Giu 2014 → Lug 2014</div>
+      </div>
+      <div class="exp-company">Unifarm S.p.A.</div>
+      <ul class="exp-bullets">
+        <li>Manutenzione infrastruttura di rete: router e access point</li>
+        <li>Interventi hardware presso farmacie del Triveneto</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- COMPETENZE -->
+  <div class="cv-section">
+    <div class="cv-section-title">Competenze Tecniche</div>
+    <table class="skills-table">
+      <tr>
+        <td>Business Intelligence</td>
+        <td>QlikView, Power BI, Power BI Service</td>
+      </tr>
+      <tr>
+        <td>Database</td>
+        <td>SQL Server, IBM DB2, MySQL</td>
+      </tr>
+      <tr>
+        <td>Backend</td>
+        <td>Java EE, Spring Boot, REST API, Apache Kafka</td>
+      </tr>
+      <tr>
+        <td>Frontend</td>
+        <td>HTML, CSS, JavaScript, Bootstrap</td>
+      </tr>
+      <tr>
+        <td>Infrastruttura</td>
+        <td>Docker, Grafana, Loki, Jaeger, QlikView Server</td>
+      </tr>
+      <tr>
+        <td>Dev Tools</td>
+        <td>Git, Postman, Linux</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="two-col">
+    <!-- FORMAZIONE -->
+    <div class="cv-section">
+      <div class="cv-section-title">Formazione</div>
+      <div class="edu-item">
+        <div class="edu-school">I.T.T. Guglielmo Marconi — Rovereto</div>
+        <div class="edu-degree">Diploma in Informatica</div>
+        <div class="edu-period">2010 → 2015</div>
+        <div class="edu-text">Programmazione OOP (C#), basi di dati relazionali (MySQL). Selezionato dalla Provincia per viaggio di studio a Londra.</div>
+      </div>
+      <ul class="cert-list">
+        <li>PL-300 — Microsoft Power BI Data Analyst <span class="cert-wip">In corso</span></li>
+        <li>EUCIP — AICA, Moduli 1 &amp; 2</li>
+        <li>ECDL — I.T.T. G. Marconi, Moduli 1–7</li>
+      </ul>
+    </div>
+
+    <!-- LINGUE & INTERESSI -->
+    <div class="cv-section">
+      <div class="cv-section-title">Lingue</div>
+      <ul class="extra-list">
+        <li>Italiano — Madrelingua</li>
+        <li>Inglese — B2</li>
+        <li>Bosniaco — Base</li>
+      </ul>
+
+      <div class="cv-section-title" style="margin-top:1rem">Interessi</div>
+      <ul class="extra-list">
+        <li>Judo · Formula 1 · Calcio</li>
+        <li>Linux · Assemblaggio PC · Homelab</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
