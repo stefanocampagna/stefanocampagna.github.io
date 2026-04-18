@@ -289,26 +289,47 @@
   <div class="container">
     <div class="section-label">Contatti</div>
     <h2 class="section-title">Scrivimi</h2>
-    <!-- Per attivare il form: registrati su formspree.io, crea un nuovo form e sostituisci YOUR_FORM_ID -->
-    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <div class="form-row">
-        <div class="form-group">
-          <label for="name">Nome</label>
-          <input type="text" id="name" name="name" placeholder="Il tuo nome" required />
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="La tua email" required />
-        </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>Sei un recruiter, un'azienda o un collega del settore? Scrivimi direttamente — rispondo entro 24 ore.</p>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/stefanocampagna96/" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          LinkedIn
+        </a>
       </div>
-      <div class="form-group">
-        <label for="message">Messaggio</label>
-        <textarea id="message" name="message" placeholder="Il tuo messaggio..." required></textarea>
+      <div class="contact-card">
+        <div data-fs-success><p class="fs-success-msg">Messaggio inviato! Ti rispondo presto.</p></div>
+        <div data-fs-error></div>
+        <form id="contact-form" class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Nome</label>
+              <input type="text" id="name" name="name" placeholder="Il tuo nome" required data-fs-field />
+              <span class="fs-field-error" data-fs-error="name"></span>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="La tua email" required data-fs-field />
+              <span class="fs-field-error" data-fs-error="email"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Messaggio</label>
+            <textarea id="message" name="message" placeholder="Il tuo messaggio..." required data-fs-field></textarea>
+            <span class="fs-field-error" data-fs-error="message"></span>
+          </div>
+          <button type="submit" class="btn btn-primary" data-fs-submit-btn>Invia messaggio</button>
+        </form>
       </div>
-      <button type="submit" class="btn btn-primary">Invia messaggio</button>
-    </form>
+    </div>
   </div>
 </section>
+
+<script>
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#contact-form', formId: 'xrerqvbk' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 <footer>
   <p>
