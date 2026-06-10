@@ -18,7 +18,7 @@ Personal portfolio website for Stefano Campagna, a Senior BI Developer. Hosted a
 ```bash
 chromium --headless --disable-gpu --no-sandbox \
   --print-to-pdf=cv-stefano-campagna.pdf \
-  --print-to-pdf-no-header \
+  --no-pdf-header-footer \
   "file://$(pwd)/cv.html"
 ```
 
