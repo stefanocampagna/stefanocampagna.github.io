@@ -25,6 +25,8 @@
       background: #fff;
       line-height: 1.5;
       font-size: 10pt;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
     }
 
     .page {
@@ -51,9 +53,10 @@
     .cv-contacts a { color: var(--teal); text-decoration: none; }
 
     /* ── Sections ── */
-    .cv-section { margin-bottom: 1.4rem; }
+    .cv-section { margin-bottom: 1.4rem; break-inside: avoid; }
 
     .cv-section-title {
+      break-after: avoid;
       font-size: 7.5pt;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -65,7 +68,7 @@
     }
 
     /* ── Experience ── */
-    .exp-item { margin-bottom: 1rem; }
+    .exp-item { margin-bottom: 1rem; break-inside: avoid; }
     .exp-header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
     .exp-role { font-weight: 600; font-size: 10.5pt; }
     .exp-period { font-family: var(--mono); font-size: 8pt; color: var(--muted); white-space: nowrap; }
@@ -73,6 +76,25 @@
     .exp-bullets { padding-left: 1rem; list-style: none; }
     .exp-bullets li { position: relative; font-size: 9pt; color: #2a4a44; line-height: 1.55; margin-bottom: 0.2rem; padding-left: 0.8rem; }
     .exp-bullets li::before { content: '›'; position: absolute; left: 0; color: var(--amber); }
+
+    /* ── Project highlight ── */
+    .project {
+      margin: 0.1rem 0 0.55rem 1rem;
+      padding: 0.5rem 0.8rem 0.35rem;
+      border-left: 2px solid var(--teal);
+      background: rgba(15,123,108,0.06);
+      border-radius: 0 4px 4px 0;
+    }
+    .project-label {
+      font-family: var(--mono);
+      font-size: 7.5pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--teal-dark);
+      margin-bottom: 0.3rem;
+    }
+    .project .exp-bullets { padding-left: 0; }
 
     /* ── Skills ── */
     .skills-table { width: 100%; border-collapse: collapse; }
@@ -90,7 +112,7 @@
     .cert-list { list-style: none; display: flex; flex-direction: column; gap: 0.2rem; }
     .cert-list li { font-size: 9pt; color: var(--muted); padding-left: 0.8rem; position: relative; }
     .cert-list li::before { content: '›'; position: absolute; left: 0; color: var(--amber); }
-    .cert-wip { font-size: 7.5pt; color: var(--teal); background: rgba(15,123,108,0.1); padding: 0.05rem 0.3rem; border-radius: 3px; font-family: var(--mono); vertical-align: middle; margin-left: 0.3rem; }
+    .cert-wip { font-size: 7.5pt; color: var(--teal); background: rgba(15,123,108,0.1); padding: 0.05rem 0.3rem; border-radius: 3px; font-family: var(--mono); vertical-align: middle; margin-left: 0.3rem; white-space: nowrap; }
 
     /* ── Languages & Extra ── */
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -98,9 +120,11 @@
     .extra-list li { font-size: 9pt; color: var(--muted); line-height: 1.7; }
 
     /* ── Print ── */
+    @page { size: A4; margin: 1.5cm 0; }
+
     @media print {
       body { font-size: 10pt; }
-      .page { padding: 1.8cm 1.8cm; max-width: 100%; }
+      .page { padding: 0 1.8cm; max-width: 100%; }
       .no-print { display: none; }
       a { color: inherit; }
     }
@@ -150,13 +174,21 @@
         <div class="exp-period">Mar 2024 → Attuale</div>
       </div>
       <div class="exp-company">Scania Italia — Trento</div>
+      <div class="project">
+        <div class="project-label">Progetto · Migrazione QlikView → Power BI <span class="cert-wip">In corso</span></div>
+        <ul class="exp-bullets">
+          <li>Referente interno della migrazione <strong>end-to-end</strong> della piattaforma BI aziendale da QlikView a <strong>Power BI</strong>, in affiancamento a consulenti specializzati</li>
+          <li>Progettazione dei <strong>semantic model</strong> (modelli dimensionali, relazioni, misure <strong>DAX</strong>) e sviluppo di report e dashboard</li>
+          <li>Amministrazione del <strong>workspace Power BI Premium</strong>: pubblicazione, permessi, gestione degli accessi e distribuzione dei contenuti</li>
+          <li>Fase attuale: prime applicazioni in migrazione, sulle 15+ del parco QlikView</li>
+        </ul>
+      </div>
       <ul class="exp-bullets">
-        <li>Gestione e amministrazione dell'infrastruttura <strong>QlikView Server</strong></li>
-        <li>Sviluppo e manutenzione di <strong>15+ applicazioni BI in QlikView</strong>, usate da 50+ utenti interni (Sales, After Sales, Logistica, Finance) e ~120 realtà esterne (concessionari e officine)</li>
-        <li>Creazione di viste logiche e query complesse in <strong>SQL Server</strong></li>
-        <li>Iniziative di <strong>data mining e data preparation</strong> con focus su qualità dei dati</li>
-        <li>Automazione di report schedulati con distribuzione automatica verso utenti interni ed esterni</li>
-        <li>Interazione con stakeholder per raccolta requisiti e proposta di soluzioni scalabili</li>
+        <li>Sviluppo e manutenzione di <strong>15+ applicazioni BI in QlikView</strong>, usate da 50+ utenti interni (Finance, Sales, After Sales, Logistica) e ~120 realtà esterne (concessionari e officine)</li>
+        <li>Amministrazione di <strong>QlikView Server</strong> e automazione di report schedulati con distribuzione verso utenti interni ed esterni</li>
+        <li>Creazione di viste logiche e query complesse in <strong>SQL Server</strong> a supporto dei modelli dati</li>
+        <li>Iniziative di <strong>data mining e data preparation</strong> con focus sulla qualità dei dati</li>
+        <li>Raccolta requisiti con gli stakeholder e proposta di soluzioni BI scalabili</li>
       </ul>
     </div>
 
@@ -195,27 +227,27 @@
     <table class="skills-table">
       <tr>
         <td>Business Intelligence</td>
-        <td>QlikView, Power BI, Power BI Service</td>
+        <td>Power BI Desktop, Power BI Service (workspace Premium), QlikView, QlikView Server</td>
+      </tr>
+      <tr>
+        <td>Modellazione dati</td>
+        <td>Semantic model, modelli dimensionali, DAX, Power Query / M, script QlikView</td>
       </tr>
       <tr>
         <td>Database</td>
         <td>SQL Server, IBM DB2, MySQL</td>
       </tr>
       <tr>
-        <td>Backend</td>
-        <td>Java EE, Spring Boot, REST API, Apache Kafka</td>
+        <td>AI &amp; automazione</td>
+        <td>Python, Microsoft 365 Copilot, Claude Code</td>
       </tr>
       <tr>
-        <td>Frontend</td>
-        <td>HTML, CSS, JavaScript, Bootstrap</td>
+        <td>Background sviluppo</td>
+        <td>Java EE, Spring Boot, REST API, Apache Kafka, JavaScript, HTML/CSS, Git</td>
       </tr>
       <tr>
         <td>Infrastruttura</td>
-        <td>Docker, Grafana, Loki, Jaeger, QlikView Server</td>
-      </tr>
-      <tr>
-        <td>Dev Tools</td>
-        <td>Postman, Git, Linux</td>
+        <td>Docker, Linux, Grafana, Loki, Jaeger</td>
       </tr>
     </table>
   </div>
@@ -231,7 +263,7 @@
         <div class="edu-text">Programmazione OOP (C#), basi di dati relazionali (MySQL). Selezionato dalla Provincia per viaggio di studio a Londra.</div>
       </div>
       <ul class="cert-list">
-        <li>PL-300 — Microsoft Power BI Data Analyst <span class="cert-wip">In corso</span></li>
+        <li>PL-300 — Microsoft Power BI Data Analyst <span class="cert-wip">In preparazione</span></li>
         <li>EUCIP — AICA, Moduli 1 &amp; 2</li>
         <li>ECDL — I.T.T. G. Marconi, Moduli 1–7</li>
       </ul>
