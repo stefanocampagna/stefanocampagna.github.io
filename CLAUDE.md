@@ -12,6 +12,7 @@ Personal portfolio website for Stefano Campagna, a Senior BI Developer. Hosted a
 - `cv.html` — print-optimized CV; content must stay in sync with `index.html`
 - `cv-stefano-campagna.pdf` — generated from `cv.html` via Chromium headless
 - `assets/style.css` — all styles for `index.html`; `cv.html` has its own `<style>` block inline
+- `assets/glass.js` — `index.html` only: procedural topographic background (canvas `#terrain`), liquid-glass refraction for `[data-refract]` elements, nav droplet that follows the active section
 
 ## Generating the PDF CV
 
@@ -37,10 +38,16 @@ Any content change (job bullets, skills, education, certifications, languages) i
 
 The amber (`#d4a574`) and teal (`#0f7b6c`) accent colors are shared between `index.html` and `cv.html`. Keep them consistent.
 
+## Design "Rilievo" (index.html)
+
+- Background is a topographic map (shaded relief + contour lines) drawn by `glass.js` from a fixed noise seed. Its colors come from the `--map-*` CSS variables, so the canvas is repainted when `data-theme` changes.
+- Real liquid-glass refraction (SVG `feDisplacementMap` in `backdrop-filter: url()`) works only in Chromium; other browsers fall back to blur + specular rim. Glass with refraction is reserved for the control layer (nav, hero buttons, portrait); content sits on a single frosted `.sheet`.
+- Experience is rendered as a dashed trail (`.trail` / `.waypoint`); the `.job-period` text format `Mmm YYYY → Mmm YYYY` is parsed by the duration script, keep it.
+
 ## Typography
 
-- Body: **IBM Plex Sans** (weights 300, 400, 600, 700)
-- Mono/display: **JetBrains Mono** (weights 400, 500, 600, 700) — used for the logo, section labels, code-like elements, and the name in `cv.html`
+- `index.html`: **Archivo** only (variable, `wdth` 62–125, `wght` 100–900). Hierarchy comes from the width axis: name at `font-stretch: 125%` weight 800, headings ~110–118%, body at 100%.
+- `cv.html`: **IBM Plex Sans** for body, **JetBrains Mono** for the name and small labels (print layout, not yet aligned to the site)
 
 ## Design workflow
 
