@@ -12,7 +12,7 @@ Personal portfolio website for Stefano Campagna, a Senior BI Developer. Hosted a
 - `cv.html` — print-optimized CV; content must stay in sync with `index.html`
 - `cv-stefano-campagna.pdf` — generated from `cv.html` via Chromium headless
 - `assets/style.css` — all styles for `index.html`; `cv.html` has its own `<style>` block inline
-- `assets/site.js` — `index.html` only: command palette (`Ctrl/⌘ K`), single-key shortcuts (can be turned off from the palette, stored in `localStorage` key `shortcuts`), `Ctrl/⌘ Enter` to submit the contact form
+- `assets/site.js` — `index.html` only: palettes and light/dark/system mode, Settings dialog (`Ctrl/⌘ ,`), command palette (`Ctrl/⌘ K`), single-key shortcuts (can be turned off from the palette, stored in `localStorage` key `shortcuts`), `Ctrl/⌘ Enter` to submit the contact form
 - `assets/fonts/` — self-hosted iA Writer Quattro webfonts (SIL OFL, license file alongside)
 
 ## Generating the PDF CV
@@ -32,12 +32,16 @@ Any content change (job bullets, skills, education, certifications, languages) i
 
 ## Theming
 
-`index.html` defaults to dark mode. Theme is stored in `localStorage` under the key `theme`. The `data-theme` attribute on `<html>` drives CSS custom properties:
+Two independent choices, both set on `<html>` by the inline script in `<head>` (before first paint) and changed from the Settings dialog (`Ctrl/⌘ ,`) or the command palette:
 
-- `:root` defines the dark-mode palette
-- `[data-theme="light"]` overrides surface/text/border variables
+- `data-palette` — color theme: `teal` (default), `one`, `gruvbox`, `solarized`, `nord`, `catppuccin`. Stored in `localStorage` key `palette`.
+- `data-theme` — `light` / `dark`. Stored in `localStorage` key `theme`; no key means "Sistema" (follows `prefers-color-scheme`, also live).
 
-The amber (`#d4a574`) and teal (`#0f7b6c`) accent colors are shared between `index.html` and `cv.html`. Keep them consistent.
+CSS variables in `assets/style.css` are layered: per-palette base colors (`[data-palette="x"]` and `[data-palette="x"][data-theme="dark"]`, teal also on `:root` / `[data-theme="dark"]`), then mode-wide values (`[data-theme]`), then derived values via `color-mix()` recomputed on every `[data-palette]`/`[data-theme]` element. The selectors work on any element: the Settings previews carry their own `data-palette`/`data-theme`.
+
+When adding or editing a palette: define all base variables for both modes (including `--diamond`, whose SVG fill/stroke must match `--paper`/`--line`), keep `--text`, `--muted`, `--accent-ink`, `--now-ink` at ≥ 4.5:1 on both `--paper` and `--panel`, and `--on-accent` ≥ 4.5:1 on `--accent`. Add it to `PALETTES` in `assets/site.js`.
+
+The amber (`#d4a574`) and teal (`#0f7b6c`) accent colors of the default `teal` palette are shared with `cv.html`. Keep them consistent.
 
 ## Design "Editor" (index.html) — inspired by zed.dev
 

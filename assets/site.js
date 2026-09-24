@@ -1,12 +1,15 @@
 /*
-  site.js — command palette (Ctrl/⌘ K), scorciatoie da tastiera a un tasto
-  e Ctrl+Invio per inviare il form. Le scorciatoie si possono disattivare
-  dalla palette (WCAG 2.1.4): la preferenza resta in localStorage.
+  site.js — temi (palette + aspetto chiaro/scuro/sistema), pannello Impostazioni
+  (Ctrl/⌘ ,), command palette (Ctrl/⌘ K), scorciatoie a un tasto e Ctrl+Invio
+  per inviare il form. Le scorciatoie a un tasto si possono disattivare
+  (WCAG 2.1.4). Preferenze in localStorage: palette, theme, shortcuts.
 */
 (function () {
   'use strict';
 
+  var root = document.documentElement;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var systemDark = window.matchMedia('(prefers-color-scheme: dark)');
   var isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
   var MOD = isMac ? '⌘' : 'Ctrl';
 
@@ -14,6 +17,110 @@
 
   document.querySelectorAll('[data-kbd-palette]').forEach(function (k) { k.textContent = MOD + ' K'; });
   document.querySelectorAll('[data-kbd-submit]').forEach(function (k) { k.textContent = MOD + ' ↵'; });
+
+  /* ── TEMI E ASPETTO ── */
+
+  var PALETTES = [
+    { id: 'teal', name: 'Teal', light: 'Predefinito', dark: 'Predefinito' },
+    { id: 'one', name: 'One', light: 'One Light', dark: 'One Dark' },
+    { id: 'gruvbox', name: 'Gruvbox', light: 'Gruvbox Light', dark: 'Gruvbox Dark' },
+    { id: 'solarized', name: 'Solarized', light: 'Solarized Light', dark: 'Solarized Dark' },
+    { id: 'nord', name: 'Nord', light: 'Snow Storm', dark: 'Polar Night' },
+    { id: 'catppuccin', name: 'Catppuccin', light: 'Latte', dark: 'Mocha' }
+  ];
+
+  function currentPalette() { return root.getAttribute('data-palette') || 'teal'; }
+  function currentMode() { return localStorage.getItem('theme') || 'system'; }
+
+  function setPalette(id) {
+    root.setAttribute('data-palette', id);
+    localStorage.setItem('palette', id);
+  }
+
+  function setMode(mode) {
+    if (mode === 'system') localStorage.removeItem('theme');
+    else localStorage.setItem('theme', mode);
+    root.setAttribute('data-theme', mode === 'system' ? (systemDark.matches ? 'dark' : 'light') : mode);
+  }
+
+  // in modalità "Sistema" segue il cambio chiaro/scuro del sistema operativo
+  systemDark.addEventListener('change', function () {
+    if (currentMode() === 'system') setMode('system');
+  });
+
+  /* ── IMPOSTAZIONI ── */
+
+  var settings = document.getElementById('settings');
+  var swatches = document.getElementById('swatches');
+
+  PALETTES.forEach(function (p) {
+    var label = document.createElement('label');
+    label.className = 'swatch';
+    label.innerHTML =
+      '<input class="visually-hidden" type="radio" name="palette" />' +
+      '<span class="swatch-preview" aria-hidden="true">' +
+        '<span class="sp-window">' +
+          '<span class="sp-bar"><i></i><i></i><i></i></span>' +
+          '<span class="sp-body"><i class="sp-h"></i><i class="sp-t"></i><i class="sp-m"></i>' +
+            '<span class="sp-row"><b class="sp-btn"></b><b class="sp-sel"></b><b class="sp-now"></b></span>' +
+          '</span>' +
+        '</span>' +
+      '</span>' +
+      '<span class="swatch-name"></span>' +
+      '<span class="swatch-variant"></span>';
+    var input = label.querySelector('input');
+    input.value = p.id;
+    input.addEventListener('change', function () { setPalette(p.id); });
+    label.querySelector('.swatch-preview').setAttribute('data-palette', p.id);
+    label.querySelector('.swatch-name').textContent = p.name;
+    swatches.appendChild(label);
+  });
+
+  var modeInputs = settings.querySelectorAll('input[name="mode"]');
+  var shortcutsInput = settings.querySelector('input[name="shortcuts"]');
+
+  modeInputs.forEach(function (r) {
+    r.addEventListener('change', function () { setMode(r.value); });
+  });
+
+  shortcutsInput.addEventListener('change', function () {
+    localStorage.setItem('shortcuts', shortcutsInput.checked ? 'on' : 'off');
+    sync();
+  });
+
+  // allinea controlli, anteprime e suggerimenti allo stato corrente
+  function sync() {
+    var theme = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    swatches.querySelectorAll('.swatch').forEach(function (label, i) {
+      var p = PALETTES[i];
+      label.querySelector('input').checked = p.id === currentPalette();
+      label.querySelector('.swatch-preview').setAttribute('data-theme', theme);
+      label.querySelector('.swatch-variant').textContent = p[theme];
+    });
+    modeInputs.forEach(function (r) { r.checked = r.value === currentMode(); });
+    shortcutsInput.checked = shortcutsOn();
+    root.classList.toggle('no-shortcuts', !shortcutsOn());
+  }
+
+  new MutationObserver(sync).observe(root, { attributes: true, attributeFilter: ['data-theme', 'data-palette'] });
+  sync();
+
+  function openSettings() {
+    if (palette.open) palette.close();
+    if (settings.open) return;
+    sync();
+    settings.showModal();
+    var checked = swatches.querySelector('input:checked');
+    if (checked) checked.focus();
+  }
+
+  settings.addEventListener('click', function (e) { if (e.target === settings) settings.close(); });
+
+  document.querySelectorAll('[data-open-settings]').forEach(function (b) {
+    b.addEventListener('click', openSettings);
+  });
+
+  /* ── COMANDI ── */
 
   function go(hash) {
     var target = document.querySelector(hash);
@@ -41,17 +148,23 @@
     } },
     { group: 'Azioni', label: 'Scarica CV', key: 'C', run: function () { clickAction('cv'); } },
     { group: 'Azioni', label: 'Apri LinkedIn', key: 'L', run: function () { clickAction('linkedin'); } },
-    { group: 'Azioni', label: 'Cambia tema', key: 'T', run: function () { document.getElementById('theme-toggle').click(); } },
-    { group: 'Preferenze', label: function () {
-      return shortcutsOn() ? 'Disattiva scorciatoie da tastiera' : 'Attiva scorciatoie da tastiera';
-    }, run: function () { localStorage.setItem('shortcuts', shortcutsOn() ? 'off' : 'on'); } }
+    { group: 'Aspetto', label: 'Passa da chiaro a scuro', key: 'T', run: function () { document.getElementById('theme-toggle').click(); } },
+    { group: 'Aspetto', label: 'Impostazioni', hint: MOD + ' ,', run: openSettings }
   ];
+
+  PALETTES.forEach(function (p) {
+    commands.push({ group: 'Tema', label: 'Tema: ' + p.name, run: function () { setPalette(p.id); } });
+  });
+
+  commands.push({ group: 'Preferenze', label: function () {
+    return shortcutsOn() ? 'Disattiva scorciatoie da tastiera' : 'Attiva scorciatoie da tastiera';
+  }, run: function () { localStorage.setItem('shortcuts', shortcutsOn() ? 'off' : 'on'); sync(); } });
 
   function labelOf(c) { return typeof c.label === 'function' ? c.label() : c.label; }
 
-  /* ── PALETTE ── */
+  /* ── PALETTE DEI COMANDI ── */
 
-  var dialog = document.getElementById('palette');
+  var palette = document.getElementById('palette');
   var input = document.getElementById('palette-input');
   var list = document.getElementById('palette-list');
   var filtered = [], active = 0;
@@ -87,9 +200,10 @@
       var text = document.createElement('span');
       text.textContent = labelOf(c);
       li.appendChild(text);
-      if (c.key && shortcutsOn()) {
+      var hint = c.hint || (c.key && shortcutsOn() ? c.key : '');
+      if (hint) {
         var k = document.createElement('kbd');
-        k.textContent = c.key;
+        k.textContent = hint;
         li.appendChild(k);
       }
       li.addEventListener('click', function () { run(i); });
@@ -102,27 +216,28 @@
       var empty = document.createElement('li');
       empty.className = 'palette-empty';
       empty.setAttribute('role', 'presentation');
-      empty.textContent = 'Nessun comando contiene “' + input.value.trim() + '”. Prova con “esperienza” o “CV”.';
+      empty.textContent = 'Nessun comando contiene “' + input.value.trim() + '”. Prova con “esperienza”, “tema” o “CV”.';
       list.appendChild(empty);
     }
     highlight();
   }
 
-  function open() {
-    if (dialog.open) return;
+  function openPalette() {
+    if (settings.open) settings.close();
+    if (palette.open) return;
     input.value = '';
     active = 0;
     render();
-    dialog.showModal();
+    palette.showModal();
     input.focus();
   }
 
-  function close() { if (dialog.open) dialog.close(); }
+  function closePalette() { if (palette.open) palette.close(); }
 
   function run(i) {
     var c = filtered[i];
     if (!c) return;
-    close();
+    closePalette();
     c.run();
   }
 
@@ -144,11 +259,10 @@
     }
   });
 
-  // clic sullo sfondo: chiude
-  dialog.addEventListener('click', function (e) { if (e.target === dialog) close(); });
+  palette.addEventListener('click', function (e) { if (e.target === palette) closePalette(); });
 
   document.querySelectorAll('[data-open-palette]').forEach(function (b) {
-    b.addEventListener('click', open);
+    b.addEventListener('click', openPalette);
   });
 
   /* ── SCORCIATOIE ── */
@@ -160,7 +274,13 @@
 
     if (mod && e.key.toLowerCase() === 'k') {
       e.preventDefault();
-      if (dialog.open) close(); else open();
+      if (palette.open) closePalette(); else openPalette();
+      return;
+    }
+
+    if (mod && e.key === ',') {
+      e.preventDefault();
+      if (settings.open) settings.close(); else openSettings();
       return;
     }
 
@@ -170,7 +290,7 @@
       return;
     }
 
-    if (dialog.open || mod || e.altKey || e.repeat) return;
+    if (palette.open || settings.open || mod || e.altKey || e.repeat) return;
     if (e.target.closest && e.target.closest('input, textarea, select, [contenteditable="true"]')) return;
     if (!shortcutsOn()) return;
 
@@ -183,11 +303,4 @@
       }
     }
   });
-
-  // con le scorciatoie spente, via anche i suggerimenti sui pulsanti
-  function syncHints() {
-    document.documentElement.classList.toggle('no-shortcuts', !shortcutsOn());
-  }
-  syncHints();
-  dialog.addEventListener('close', syncHints);
 })();
