@@ -75,9 +75,12 @@
   <link rel="stylesheet" href="assets/style.css" />
   <script>
     (function() {
+      var root = document.documentElement;
       var saved = localStorage.getItem('theme');
       var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+      root.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+      var palette = localStorage.getItem('palette');
+      if (palette) root.setAttribute('data-palette', palette);
     })();
   </script>
   <script src="assets/site.js" defer></script>
@@ -104,7 +107,7 @@
         <span class="search-label">Cerca</span><span class="menu-label">Menu</span>
         <kbd data-kbd-palette>Ctrl K</kbd>
       </button>
-      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambia tema">
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Passa da chiaro a scuro">
         <!-- sole: visibile in dark mode -->
         <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
@@ -116,6 +119,9 @@
         <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
+      </button>
+      <button class="icon-btn" type="button" data-open-settings aria-haspopup="dialog" aria-label="Impostazioni: tema e aspetto" aria-keyshortcuts="Control+Comma Meta+Comma">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>
       </button>
       <a class="btn btn-primary btn-sm" href="#contact" aria-keyshortcuts="S">Scrivimi <kbd aria-hidden="true">S</kbd></a>
     </div>
@@ -502,6 +508,38 @@
     <ul class="palette-list" id="palette-list" role="listbox" aria-label="Comandi"></ul>
     <p class="palette-foot" aria-hidden="true"><kbd>↑</kbd><kbd>↓</kbd> per muoverti <kbd>↵</kbd> per aprire</p>
   </div>
+</dialog>
+
+<!-- Impostazioni: tema (palette), aspetto chiaro/scuro, scorciatoie -->
+<dialog class="settings" id="settings" aria-labelledby="settings-title">
+  <form method="dialog">
+    <div class="settings-head">
+      <h2 id="settings-title">Impostazioni</h2>
+      <button class="icon-btn" value="close" aria-label="Chiudi impostazioni">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <fieldset class="settings-group">
+      <legend>Tema</legend>
+      <div class="swatches" id="swatches"></div>
+    </fieldset>
+    <fieldset class="settings-group">
+      <legend>Aspetto</legend>
+      <div class="segmented">
+        <label><input class="visually-hidden" type="radio" name="mode" value="light" />Chiaro</label>
+        <label><input class="visually-hidden" type="radio" name="mode" value="dark" />Scuro</label>
+        <label><input class="visually-hidden" type="radio" name="mode" value="system" />Sistema</label>
+      </div>
+    </fieldset>
+    <fieldset class="settings-group">
+      <legend>Tastiera</legend>
+      <label class="switch">
+        <input class="visually-hidden" type="checkbox" name="shortcuts" role="switch" />
+        <span class="switch-track" aria-hidden="true"></span>
+        <span>Scorciatoie a un tasto <span class="settings-hint">L, C, S, T e 1–6 per sezioni e azioni</span></span>
+      </label>
+    </fieldset>
+  </form>
 </dialog>
 
 <script>
