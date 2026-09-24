@@ -12,7 +12,8 @@ Personal portfolio website for Stefano Campagna, a Senior BI Developer. Hosted a
 - `cv.html` — print-optimized CV; content must stay in sync with `index.html`
 - `cv-stefano-campagna.pdf` — generated from `cv.html` via Chromium headless
 - `assets/style.css` — all styles for `index.html`; `cv.html` has its own `<style>` block inline
-- `assets/glass.js` — `index.html` only: procedural topographic background (canvas `#terrain`), liquid-glass refraction for `[data-refract]` elements, nav droplet that follows the active section
+- `assets/site.js` — `index.html` only: command palette (`Ctrl/⌘ K`), single-key shortcuts (can be turned off from the palette, stored in `localStorage` key `shortcuts`), `Ctrl/⌘ Enter` to submit the contact form
+- `assets/fonts/` — self-hosted iA Writer Quattro webfonts (SIL OFL, license file alongside)
 
 ## Generating the PDF CV
 
@@ -38,15 +39,18 @@ Any content change (job bullets, skills, education, certifications, languages) i
 
 The amber (`#d4a574`) and teal (`#0f7b6c`) accent colors are shared between `index.html` and `cv.html`. Keep them consistent.
 
-## Design "Rilievo" (index.html)
+## Design "Editor" (index.html) — inspired by zed.dev
 
-- Background is a topographic map (shaded relief + contour lines) drawn by `glass.js` from a fixed noise seed. Its colors come from the `--map-*` CSS variables, so the canvas is repainted when `data-theme` changes.
-- Real liquid-glass refraction (SVG `feDisplacementMap` in `backdrop-filter: url()`) works only in Chromium; other browsers fall back to blur + specular rim. Glass with refraction is reserved for the control layer (nav, hero buttons, portrait); content sits on a single frosted `.sheet`.
-- Experience is rendered as a dashed trail (`.trail` / `.waypoint`); the `.job-period` text format `Mmm YYYY → Mmm YYYY` is parsed by the duration script, keep it.
+- Warm-gray paper with grain, a central column bounded by hairline rails (`.page::before`), dashed outer rails at ≥1400px, and full-width rules with diamonds where they cross the rails (`.band::before/::after`, diamond SVG in `--diamond` per theme).
+- Buttons are "keys": 4px radius, inset bottom shadow, and a `<kbd>` hint for their shortcut. Keep `data-action="linkedin"` / `data-action="cv"` on the hero buttons: the shortcuts click them.
+- "Chi sono" is rendered as an editor window (`.editor`): gutter line numbers via CSS counters, `<strong>` styled as a text selection.
+- Experience is laid out like release notes (`.release`); the `.job-period` text format `Mmm YYYY → Mmm YYYY` is parsed by the duration script, keep it.
+- The "Now:" banner under the header links to the NOW footer (`#now`); keep its text in sync with the first NOW item.
+- Accent is teal instead of Zed's blue, to stay consistent with `cv.html`.
 
 ## Typography
 
-- `index.html`: **Archivo** only (variable, `wdth` 62–125, `wght` 100–900). Hierarchy comes from the width axis: name at `font-stretch: 125%` weight 800, headings ~110–118%, body at 100%.
+- `index.html`: **IBM Plex Serif** (Google Fonts, 300/400 + italics) for headings, the name in light italic; **iA Writer Quattro** (self-hosted) for body text; system monospace for `<kbd>`, badges and line numbers.
 - `cv.html`: **IBM Plex Sans** for body, **JetBrains Mono** for the name and small labels (print layout, not yet aligned to the site)
 
 ## Design workflow

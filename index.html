@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stefano Campagna — IT Specialist | Dati &amp; Infrastruttura</title>
   <meta name="description" content="IT Specialist con 10+ anni di esperienza IT: focus attuale su dati e BI (QlikView, Power BI, SQL Server), background da sviluppo software e forte interesse per sistemi e infrastruttura." />
   <meta name="author" content="Stefano Campagna" />
@@ -68,9 +68,10 @@
     }
   }
   </script>
+  <link rel="preload" href="assets/fonts/iAWriterQuattroS-Regular.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/style.css" />
   <script>
     (function() {
@@ -79,40 +80,47 @@
       document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
     })();
   </script>
-  <script src="assets/glass.js" defer></script>
+  <script src="assets/site.js" defer></script>
 </head>
 <body>
+<div class="page">
 
-<!-- Carta topografica procedurale: disegnata da assets/glass.js -->
-<canvas id="terrain" aria-hidden="true"></canvas>
-
-<nav class="nav glass" aria-label="Sezioni" data-refract data-bezel="12" data-scale="-70" data-blur="5">
-  <a class="nav-logo" href="#hero" aria-label="Torna all'inizio">SC</a>
-  <div class="nav-track">
-    <ul class="nav-links">
-      <li class="nav-droplet" aria-hidden="true"></li>
-      <li><a href="#about">Chi sono</a></li>
-      <li><a href="#experience">Esperienza</a></li>
-      <li><a href="#skills">Competenze</a></li>
-      <li><a href="#education">Formazione</a></li>
-      <li><a href="#extra">Extra</a></li>
-      <li><a href="#contact">Contatti</a></li>
-    </ul>
+<header class="topbar">
+  <div class="col topbar-inner">
+    <a class="brand" href="#hero" aria-label="Stefano Campagna, torna all'inizio">
+      <span class="brand-mark" aria-hidden="true">SC</span>
+      <span class="brand-name">Stefano Campagna</span>
+    </a>
+    <nav class="nav" aria-label="Sezioni">
+      <a href="#about">Chi sono</a>
+      <a href="#experience">Esperienza</a>
+      <a href="#skills">Competenze</a>
+      <a href="#education">Formazione</a>
+      <a href="#extra">Extra</a>
+    </nav>
+    <div class="topbar-actions">
+      <button class="search" type="button" data-open-palette aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <span class="search-label">Cerca</span><span class="menu-label">Menu</span>
+        <kbd data-kbd-palette>Ctrl K</kbd>
+      </button>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambia tema">
+        <!-- sole: visibile in dark mode -->
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <!-- luna: visibile in light mode -->
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+      <a class="btn btn-primary btn-sm" href="#contact" aria-keyshortcuts="S">Scrivimi <kbd aria-hidden="true">S</kbd></a>
+    </div>
   </div>
-  <button class="theme-toggle" id="theme-toggle" aria-label="Cambia tema">
-    <!-- sole: visibile in dark mode -->
-    <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-      <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-    </svg>
-    <!-- luna: visibile in light mode -->
-    <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-    </svg>
-  </button>
-</nav>
+</header>
 
 <script>
   document.getElementById('theme-toggle').addEventListener('click', function() {
@@ -123,77 +131,108 @@
   });
 </script>
 
-<!-- HERO -->
-<header id="hero" class="hero">
-  <div class="hero-inner">
-    <div class="hero-content">
-      <p class="hero-role"><strong>IT Specialist</strong> Dati &amp; Infrastruttura</p>
-      <h1>Stefano<br>Campagna</h1>
-      <p class="hero-subtitle">
-        Dal codice ai dati, con una crescente passione per i sistemi.
-        10+ anni di esperienza IT — oggi su dati e BI, aperto a nuove opportunità anche in ambito sistemi e infrastruttura.
-      </p>
-      <div class="hero-ctas">
-        <a class="btn btn-primary glass" href="https://www.linkedin.com/in/stefanocampagna96/" target="_blank" rel="noopener" data-refract data-bezel="10" data-scale="-56">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-          LinkedIn
-        </a>
-        <a class="btn glass" href="/cv-stefano-campagna.pdf" download data-refract data-bezel="10" data-scale="-56">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Scarica CV
-        </a>
-        <a class="btn btn-quiet" href="#experience">Scopri il mio percorso</a>
-      </div>
-    </div>
-    <figure class="hero-portrait glass" data-refract data-bezel="20" data-scale="-110" data-blur="0.5">
-      <img src="assets/avatar.jpg" alt="Stefano Campagna" width="800" height="800" />
-    </figure>
-  </div>
-  <p class="hero-place">Rovereto, Trentino <span>45°53′ N &nbsp;11°02′ E</span></p>
-</header>
+<a class="now-banner" href="#now">
+  <span class="now-label">Now:</span>
+  <span class="now-text">Sto seguendo, come referente interno, la migrazione da QlikView a Power BI in Scania.</span>
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+</a>
 
-<div class="sheet glass">
 <main>
 
-  <!-- ABOUT -->
-  <section id="about" class="block">
-    <h2>Chi sono</h2>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>
-          Sono un professionista IT con oltre <strong>10 anni di esperienza nel settore</strong>,
-          con un percorso che parte dallo sviluppo software — <strong>Java, API REST,
-          microservizi</strong> — e piattaforme portate in produzione.
-        </p>
-        <p>
-          Da qui ho orientato il mio focus verso la <strong>gestione dei dati e la Business
-          Intelligence</strong>: oggi sviluppo e amministro la piattaforma QlikView aziendale e sono
-          <strong>referente interno della sua migrazione verso Power BI</strong>. In parallelo
-          coltivo una solida passione per <strong>sistemi, reti e infrastruttura</strong>, che alimento
-          con un homelab personale. Sempre curioso, orientato alla crescita continua e aperto
-          a nuove sfide tecniche.
-        </p>
-      </div>
-      <dl class="legend">
-        <div><dt>Anni di esperienza</dt><dd>10+</dd></div>
-        <div><dt>Focus attuale</dt><dd>BI</dd></div>
-        <div><dt>Anni Full‑Stack</dt><dd>8</dd></div>
-        <div><dt>Lingue straniere</dt><dd>2</dd></div>
-      </dl>
+<!-- HERO -->
+<section id="hero" class="hero">
+  <div class="col hero-inner">
+    <p class="hero-role">IT Specialist — Dati &amp; Infrastruttura</p>
+    <h1>Stefano Campagna</h1>
+    <p class="hero-subtitle">
+      Dal codice ai dati, con una crescente passione per i sistemi.
+      10+ anni di esperienza IT — oggi su dati e BI, aperto a nuove opportunità anche in ambito sistemi e infrastruttura.
+    </p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://www.linkedin.com/in/stefanocampagna96/" target="_blank" rel="noopener" data-action="linkedin" aria-keyshortcuts="L">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        LinkedIn <kbd aria-hidden="true">L</kbd>
+      </a>
+      <a class="btn" href="/cv-stefano-campagna.pdf" download data-action="cv" aria-keyshortcuts="C">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Scarica CV <kbd aria-hidden="true">C</kbd>
+      </a>
     </div>
-  </section>
+    <p class="hero-note">Rovereto, Trentino · <a href="#experience">Scopri il mio percorso</a></p>
+  </div>
+</section>
 
-  <!-- EXPERIENCE -->
-  <section id="experience" class="block">
-    <h2>Esperienza</h2>
-    <ol class="trail">
+<!-- IN BREVE -->
+<section class="band stats" aria-label="In breve">
+  <dl class="col stats-grid">
+    <div><dt>Anni di esperienza</dt><dd>10+</dd></div>
+    <div><dt>Focus attuale</dt><dd>BI</dd></div>
+    <div><dt>Anni Full‑Stack</dt><dd>8</dd></div>
+    <div><dt>Lingue straniere</dt><dd>2</dd></div>
+  </dl>
+</section>
 
-      <li class="waypoint current">
-        <div class="job-header">
-          <h3 class="job-role">BI Developer &amp; Data Management</h3>
-          <p class="job-period">Mar 2024 → Attuale</p>
+<!-- ABOUT: un documento aperto nell'editor -->
+<section id="about" class="band">
+  <div class="col section-pad">
+    <div class="editor">
+      <div class="editor-titlebar" aria-hidden="true">
+        <span class="dots"><i></i><i></i><i></i></span>
+        <span class="crumbs">stefano <span>/</span> chi-sono.md</span>
+        <span class="branch">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="8" r="2.5"/><path d="M6 8.5v7M18 10.5c0 4-6 3-10.5 5.5"/></svg>
+          main
+        </span>
+      </div>
+      <div class="editor-body">
+        <aside class="editor-side">
+          <figure class="frame">
+            <img src="assets/avatar.jpg" alt="Stefano Campagna" width="800" height="800" />
+          </figure>
+          <p class="side-name">Stefano Campagna</p>
+          <p class="side-meta">IT Specialist — Dati &amp; Infrastruttura</p>
+          <p class="side-meta">Rovereto, Trentino</p>
+        </aside>
+        <div class="editor-doc">
+          <h2><span class="md" aria-hidden="true"># </span>Chi sono<span class="caret" aria-hidden="true"></span></h2>
+          <p>
+            Sono un professionista IT con oltre <strong>10 anni di esperienza nel settore</strong>,
+            con un percorso che parte dallo sviluppo software — <strong>Java, API REST,
+            microservizi</strong> — e piattaforme portate in produzione.
+          </p>
+          <p>
+            Da qui ho orientato il mio focus verso la <strong>gestione dei dati e la Business
+            Intelligence</strong>: oggi sviluppo e amministro la piattaforma QlikView aziendale e sono
+            <strong>referente interno della sua migrazione verso Power BI</strong>. In parallelo
+            coltivo una solida passione per <strong>sistemi, reti e infrastruttura</strong>, che alimento
+            con un homelab personale. Sempre curioso, orientato alla crescita continua e aperto
+            a nuove sfide tecniche.
+          </p>
         </div>
+      </div>
+      <div class="editor-status" aria-hidden="true">
+        <span>Markdown</span>
+        <span>UTF-8</span>
+        <span class="status-end">Ln 5, Col 1</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE: come le note di rilascio -->
+<section id="experience" class="band">
+  <div class="col section-head">
+    <h2>Esperienza</h2>
+  </div>
+  <ol class="col releases">
+
+    <li class="release current">
+      <div class="release-meta">
+        <p class="job-period">Mar 2024 → Attuale</p>
         <p class="job-company"><a href="https://www.scania.com/it" target="_blank" rel="noopener">Scania Italia</a></p>
+      </div>
+      <div class="release-body">
+        <h3 class="job-role">BI Developer &amp; Data Management</h3>
         <div class="job-project">
           <p class="job-project-label">Progetto · Migrazione QlikView → Power BI <span class="badge">In corso</span></p>
           <ul class="job-bullets">
@@ -210,14 +249,16 @@
           <li>Iniziative di <strong>data mining e data preparation</strong> con focus sulla qualità dei dati</li>
           <li>Raccolta requisiti con gli stakeholder e proposta di soluzioni BI scalabili</li>
         </ul>
-      </li>
+      </div>
+    </li>
 
-      <li class="waypoint">
-        <div class="job-header">
-          <h3 class="job-role">Full Stack Developer</h3>
-          <p class="job-period">Feb 2016 → Feb 2024</p>
-        </div>
+    <li class="release">
+      <div class="release-meta">
+        <p class="job-period">Feb 2016 → Feb 2024</p>
         <p class="job-company"><a href="https://www.scania.com/it" target="_blank" rel="noopener">Scania Italia</a></p>
+      </div>
+      <div class="release-body">
+        <h3 class="job-role">Full Stack Developer</h3>
         <ul class="job-bullets">
           <li>Sviluppatore principale di una <strong>piattaforma di pianificazione manutenzioni</strong> per officine Scania</li>
           <li>Sviluppo end‑to‑end con <strong>Java, SQL, JSP, JavaScript, Bootstrap, jQuery</strong></li>
@@ -225,213 +266,243 @@
           <li>Esperienza su <strong>Apache Kafka</strong> e <strong>Spring Boot</strong> per microservizi scalabili</li>
           <li>Monitoraggio con <strong>Grafana, Loki e Jaeger</strong></li>
         </ul>
-      </li>
+      </div>
+    </li>
 
-      <li class="waypoint">
-        <div class="job-header">
-          <h3 class="job-role">Stagista IT</h3>
-          <p class="job-period">Giu 2014 → Lug 2014</p>
-        </div>
+    <li class="release">
+      <div class="release-meta">
+        <p class="job-period">Giu 2014 → Lug 2014</p>
         <p class="job-company"><a href="https://www.unifarm.it/" target="_blank" rel="noopener">Unifarm S.p.A.</a></p>
+      </div>
+      <div class="release-body">
+        <h3 class="job-role">Stagista IT</h3>
         <ul class="job-bullets">
           <li>Manutenzione infrastruttura di rete: sostituzione e configurazione di router e access point</li>
           <li>Interventi hardware presso farmacie del Triveneto</li>
           <li>Gestione inventario, magazzino e spedizione attrezzature IT</li>
         </ul>
-      </li>
+      </div>
+    </li>
 
-    </ol>
-  </section>
+  </ol>
+</section>
 
-  <!-- SKILLS -->
-  <section id="skills" class="block">
+<!-- SKILLS -->
+<section id="skills" class="band">
+  <div class="col section-head">
     <h2>Competenze</h2>
-    <div class="skills">
-      <div class="skill-group">
-        <h3>Business Intelligence</h3>
-        <ul class="chips">
-          <li>Power BI Desktop</li>
-          <li>Power BI Service</li>
-          <li>Workspace Premium</li>
-          <li>QlikView</li>
-          <li>QlikView Server</li>
-        </ul>
-      </div>
-      <div class="skill-group">
-        <h3>Modellazione dati</h3>
-        <ul class="chips">
-          <li>Semantic model</li>
-          <li>Modelli dimensionali</li>
-          <li>DAX</li>
-          <li>Power Query / M</li>
-          <li>Script QlikView</li>
-        </ul>
-      </div>
-      <div class="skill-group">
-        <h3>Database</h3>
-        <ul class="chips">
-          <li>SQL Server</li>
-          <li>IBM DB2</li>
-          <li>MySQL</li>
-        </ul>
-      </div>
-      <div class="skill-group">
-        <h3>AI &amp; automazione</h3>
-        <ul class="chips">
-          <li>Python</li>
-          <li>Microsoft 365 Copilot</li>
-          <li>Claude Code</li>
-        </ul>
-      </div>
-      <div class="skill-group">
-        <h3>Background sviluppo</h3>
-        <ul class="chips">
-          <li>Java EE</li>
-          <li>Spring Boot</li>
-          <li>REST API</li>
-          <li>Apache Kafka</li>
-          <li>JavaScript</li>
-          <li>HTML/CSS</li>
-          <li>Git</li>
-        </ul>
-      </div>
-      <div class="skill-group">
-        <h3>Infrastruttura</h3>
-        <ul class="chips">
-          <li>Docker</li>
-          <li>Linux</li>
-          <li>Grafana</li>
-          <li>Loki</li>
-          <li>Jaeger</li>
-        </ul>
-      </div>
+  </div>
+  <div class="col cells cells-3">
+    <div class="cell">
+      <h3>Business Intelligence</h3>
+      <ul class="keys">
+        <li>Power BI Desktop</li>
+        <li>Power BI Service</li>
+        <li>Workspace Premium</li>
+        <li>QlikView</li>
+        <li>QlikView Server</li>
+      </ul>
     </div>
-  </section>
+    <div class="cell">
+      <h3>Modellazione dati</h3>
+      <ul class="keys">
+        <li>Semantic model</li>
+        <li>Modelli dimensionali</li>
+        <li>DAX</li>
+        <li>Power Query / M</li>
+        <li>Script QlikView</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <h3>Database</h3>
+      <ul class="keys">
+        <li>SQL Server</li>
+        <li>IBM DB2</li>
+        <li>MySQL</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <h3>AI &amp; automazione</h3>
+      <ul class="keys">
+        <li>Python</li>
+        <li>Microsoft 365 Copilot</li>
+        <li>Claude Code</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <h3>Background sviluppo</h3>
+      <ul class="keys">
+        <li>Java EE</li>
+        <li>Spring Boot</li>
+        <li>REST API</li>
+        <li>Apache Kafka</li>
+        <li>JavaScript</li>
+        <li>HTML/CSS</li>
+        <li>Git</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <h3>Infrastruttura</h3>
+      <ul class="keys">
+        <li>Docker</li>
+        <li>Linux</li>
+        <li>Grafana</li>
+        <li>Loki</li>
+        <li>Jaeger</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  <!-- EDUCATION -->
-  <section id="education" class="block">
+<!-- EDUCATION -->
+<section id="education" class="band">
+  <div class="col section-head">
     <h2>Formazione</h2>
-    <div class="edu">
-      <div class="edu-main">
-        <h3 class="edu-school">I.T.T. Guglielmo Marconi — Rovereto</h3>
-        <p class="edu-degree">Diploma in Informatica <span class="edu-period">2010 → 2015</span></p>
-        <p class="edu-text">
-          Solide basi di programmazione OOP con <strong>C#</strong> e gestione di basi di dati relazionali con <strong>MySQL</strong>.
-          Studente selezionato dalla Provincia per un viaggio di studio a Londra in riconoscimento dell'eccellenza accademica.
-        </p>
-      </div>
-      <div class="certs">
-        <div class="cert cert--featured">
-          <p class="cert-title">PL-300 <span class="badge">In preparazione</span></p>
-          <p class="cert-issuer">Microsoft — Power BI Data Analyst</p>
-        </div>
-        <a class="cert" href="https://www.aicanet.it/it-administrator/moduli?artid=180741" target="_blank" rel="noopener">
-          <span class="cert-title">EUCIP</span>
-          <span class="cert-issuer">AICA — Moduli 1 &amp; 2</span>
-        </a>
-        <a class="cert" href="https://new.marconirovereto.it" target="_blank" rel="noopener">
-          <span class="cert-title">ECDL</span>
-          <span class="cert-issuer">I.T.T. G. Marconi — Moduli 1‑7</span>
-        </a>
-      </div>
+  </div>
+  <div class="col cells cells-edu">
+    <div class="cell">
+      <h3 class="edu-school">I.T.T. Guglielmo Marconi — Rovereto</h3>
+      <p class="edu-degree">Diploma in Informatica <span class="edu-period">2010 → 2015</span></p>
+      <p class="edu-text">
+        Solide basi di programmazione OOP con <strong>C#</strong> e gestione di basi di dati relazionali con <strong>MySQL</strong>.
+        Studente selezionato dalla Provincia per un viaggio di studio a Londra in riconoscimento dell'eccellenza accademica.
+      </p>
     </div>
-  </section>
+    <div class="cell certs">
+      <div class="cert cert--featured">
+        <p class="cert-title">PL-300 <span class="badge">In preparazione</span></p>
+        <p class="cert-issuer">Microsoft — Power BI Data Analyst</p>
+      </div>
+      <a class="cert" href="https://www.aicanet.it/it-administrator/moduli?artid=180741" target="_blank" rel="noopener">
+        <span class="cert-title">EUCIP</span>
+        <span class="cert-issuer">AICA — Moduli 1 &amp; 2</span>
+      </a>
+      <a class="cert" href="https://new.marconirovereto.it" target="_blank" rel="noopener">
+        <span class="cert-title">ECDL</span>
+        <span class="cert-issuer">I.T.T. G. Marconi — Moduli 1‑7</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-  <!-- EXTRA -->
-  <section id="extra" class="block">
+<!-- EXTRA -->
+<section id="extra" class="band">
+  <div class="col section-head">
     <h2>Lingue &amp; Interessi</h2>
-    <div class="extra-grid">
-      <div class="extra-group">
-        <h3>Lingue</h3>
-        <ul>
-          <li>Italiano — Madrelingua</li>
-          <li>Inglese — B2</li>
-          <li>Bosniaco — Base</li>
-        </ul>
-      </div>
-      <div class="extra-group">
-        <h3>Sport</h3>
-        <ul>
-          <li>Judo</li>
-          <li>Formula 1</li>
-          <li>Calcio</li>
-        </ul>
-      </div>
-      <div class="extra-group">
-        <h3>Tecnologia</h3>
-        <ul>
-          <li>Linux</li>
-          <li>Assemblaggio PC</li>
-          <li>Homelab</li>
-        </ul>
-        <p class="extra-note">
-          Nel tempo libero gestisco un <strong>homelab personale</strong> (progetto hobbistico, non
-          esperienza professionale) su Debian con Docker (~15 container): reverse proxy, reti e VPN,
-          backup automatizzati e virtualizzazione KVM.
-        </p>
-      </div>
+  </div>
+  <div class="col cells cells-3">
+    <div class="cell">
+      <h3>Lingue</h3>
+      <ul class="plain">
+        <li>Italiano — Madrelingua</li>
+        <li>Inglese — B2</li>
+        <li>Bosniaco — Base</li>
+      </ul>
     </div>
-  </section>
+    <div class="cell">
+      <h3>Sport</h3>
+      <ul class="plain">
+        <li>Judo</li>
+        <li>Formula 1</li>
+        <li>Calcio</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <h3>Tecnologia</h3>
+      <ul class="plain">
+        <li>Linux</li>
+        <li>Assemblaggio PC</li>
+        <li>Homelab</li>
+      </ul>
+      <p class="extra-note">
+        Nel tempo libero gestisco un <strong>homelab personale</strong> (progetto hobbistico, non
+        esperienza professionale) su Debian con Docker (~15 container): reverse proxy, reti e VPN,
+        backup automatizzati e virtualizzazione KVM.
+      </p>
+    </div>
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="block">
+<!-- CONTACT -->
+<section id="contact" class="band">
+  <div class="col section-head">
     <h2>Scrivimi</h2>
-    <div class="contact-grid">
-      <div class="contact-info">
-        <p>Sei un recruiter, un'azienda o un collega del settore? Scrivimi direttamente — rispondo entro 24 ore.</p>
-        <a class="btn btn-outline" href="https://www.linkedin.com/in/stefanocampagna96/" target="_blank" rel="noopener">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-          LinkedIn
-        </a>
-      </div>
-      <div class="contact-card">
-        <div data-fs-success></div>
-        <div data-fs-error></div>
-        <form id="contact-form" class="contact-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Nome</label>
-              <input type="text" id="name" name="name" placeholder="Il tuo nome" required data-fs-field />
-              <span class="fs-field-error" data-fs-error="name"></span>
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="La tua email" required data-fs-field />
-              <span class="fs-field-error" data-fs-error="email"></span>
-            </div>
+  </div>
+  <div class="col section-pad contact-grid">
+    <div class="contact-info">
+      <p>Sei un recruiter, un'azienda o un collega del settore? Scrivimi direttamente — rispondo entro 24 ore.</p>
+      <a class="btn" href="https://www.linkedin.com/in/stefanocampagna96/" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+    <div class="contact-card">
+      <div data-fs-success></div>
+      <div data-fs-error></div>
+      <form id="contact-form" class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" placeholder="Il tuo nome" required data-fs-field />
+            <span class="fs-field-error" data-fs-error="name"></span>
           </div>
           <div class="form-group">
-            <label for="message">Messaggio</label>
-            <textarea id="message" name="message" placeholder="Il tuo messaggio..." required data-fs-field></textarea>
-            <span class="fs-field-error" data-fs-error="message"></span>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="La tua email" required data-fs-field />
+            <span class="fs-field-error" data-fs-error="email"></span>
           </div>
-          <button type="submit" class="btn btn-primary" data-fs-submit-btn>Invia messaggio</button>
-        </form>
-      </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Messaggio</label>
+          <textarea id="message" name="message" placeholder="Il tuo messaggio..." required data-fs-field></textarea>
+          <span class="fs-field-error" data-fs-error="message"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" data-fs-submit-btn aria-keyshortcuts="Control+Enter Meta+Enter">Invia messaggio <kbd aria-hidden="true" data-kbd-submit>Ctrl ↵</kbd></button>
+      </form>
     </div>
-  </section>
+  </div>
+</section>
 
 </main>
 
-<footer class="footer">
-  <div class="footer-now">
-    <p class="footer-now-title">NOW — Settembre 2026</p>
-    <p>Sto seguendo, come referente interno, la migrazione da QlikView a Power BI in Scania.</p>
-    <p>Sto preparando la certificazione Microsoft PL-300.</p>
-    <p>Sto approfondendo Claude Code — AI-assisted development nel flusso di lavoro quotidiano.</p>
-    <p>Homelab: media server e home automation self-hosted, ~15 container su Debian.</p>
-    <p>Sto valutando un percorso di crescita verso l'amministrazione di sistemi Linux (es. certificazione LPIC-1).</p>
-  </div>
-  <div class="footer-meta">
-    <p>
-      Stefano Campagna —
-      <a href="https://www.linkedin.com/in/stefanocampagna96/" target="_blank" rel="noopener">LinkedIn</a>
-      · stefanocampagna.it
-    </p>
-    <p class="footer-update">Aggiornato: 24 settembre 2026</p>
+<footer id="now" class="band footer">
+  <div class="col section-pad footer-grid">
+    <div class="footer-now">
+      <h2 class="footer-now-title">NOW — Settembre 2026</h2>
+      <ul>
+        <li>Sto seguendo, come referente interno, la migrazione da QlikView a Power BI in Scania.</li>
+        <li>Sto preparando la certificazione Microsoft PL-300.</li>
+        <li>Sto approfondendo Claude Code — AI-assisted development nel flusso di lavoro quotidiano.</li>
+        <li>Homelab: media server e home automation self-hosted, ~15 container su Debian.</li>
+        <li>Sto valutando un percorso di crescita verso l'amministrazione di sistemi Linux (es. certificazione LPIC-1).</li>
+      </ul>
+    </div>
+    <div class="footer-meta">
+      <p>
+        Stefano Campagna —
+        <a href="https://www.linkedin.com/in/stefanocampagna96/" target="_blank" rel="noopener">LinkedIn</a>
+        · stefanocampagna.it
+      </p>
+      <p class="footer-update">Aggiornato: 24 settembre 2026</p>
+    </div>
   </div>
 </footer>
+
 </div>
+
+<!-- Command palette: navigazione e azioni da tastiera (e menu su mobile) -->
+<dialog class="palette" id="palette" aria-label="Comandi">
+  <div class="palette-box">
+    <div class="palette-search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="palette-input" type="text" placeholder="Cerca una sezione o un'azione…" autocomplete="off" spellcheck="false"
+        role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list" aria-label="Cerca comandi" />
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="palette-list" id="palette-list" role="listbox" aria-label="Comandi"></ul>
+    <p class="palette-foot" aria-hidden="true"><kbd>↑</kbd><kbd>↓</kbd> per muoverti <kbd>↵</kbd> per aprire</p>
+  </div>
+</dialog>
 
 <script>
   window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
@@ -473,7 +544,7 @@
     'color:#22c4aa;font-size:1.4rem;font-weight:600;'
   );
   console.log(
-    '%cSe stai guardando la console, probabilmente sei dev o curioso.\nIn entrambi i casi, scrivimi:\nhttps://www.linkedin.com/in/stefanocampagna96/',
+    '%cSe stai guardando la console, probabilmente sei dev o curioso.\nIn entrambi i casi, scrivimi:\nhttps://www.linkedin.com/in/stefanocampagna96/\n\nProva anche Ctrl+K.',
     'color:#7a9e97;font-size:0.95rem;line-height:1.7;'
   );
 </script>
