@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this project is
 
-Personal portfolio website for Stefano Campagna, a Senior BI Developer. Hosted at `stefanocampagna.it` via GitHub Pages. No build toolchain — pure HTML, CSS, and vanilla JS.
+Personal portfolio website for Stefano Campagna, positioned as "Business Intelligence & Data Integration" (BI Developer at Scania Italia, with a background in systems integration). Hosted at `stefanocampagna.it` via GitHub Pages. No build toolchain — pure HTML, CSS, and vanilla JS.
 
 ## Files
 
@@ -19,12 +19,13 @@ Personal portfolio website for Stefano Campagna, a Senior BI Developer. Hosted a
 
 ```bash
 chromium --headless --disable-gpu --no-sandbox \
+  --virtual-time-budget=15000 --run-all-compositor-stages-before-draw \
   --print-to-pdf=cv-stefano-campagna.pdf \
   --no-pdf-header-footer \
   "file://$(pwd)/cv.html"
 ```
 
-Run this after any change to `cv.html`.
+Run this after any change to `cv.html`. Without `--virtual-time-budget` Chromium may print before Google Fonts load; check with `pdffonts` (NotoSansMono only for the `→` glyph is expected).
 
 ## Content sync rule
 

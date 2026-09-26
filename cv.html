@@ -67,6 +67,9 @@
       margin-bottom: 0.8rem;
     }
 
+    /* ── Profile ── */
+    .cv-profile { font-size: 9.5pt; color: #2a4a44; line-height: 1.6; }
+
     /* ── Experience ── */
     .exp-item { margin-bottom: 1rem; break-inside: avoid; }
     .exp-header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
@@ -154,7 +157,7 @@
   <header class="cv-header">
     <div>
       <div class="cv-name">Stefano <span>Campagna</span></div>
-      <div class="cv-title">IT Specialist — Dati &amp; Infrastruttura</div>
+      <div class="cv-title">Business Intelligence &amp; Data Integration<br>Power BI · QlikView · SQL Server · API</div>
     </div>
     <div class="cv-contacts">
       <a href="mailto:stefano.campagna.1996@gmail.com">stefano.campagna.1996@gmail.com</a><br>
@@ -163,6 +166,21 @@
       Rovereto, TN — Italia
     </div>
   </header>
+
+  <!-- PROFILO -->
+  <div class="cv-section">
+    <div class="cv-section-title">Profilo</div>
+    <p class="cv-profile">
+      Professionista IT con <strong>10+ anni di esperienza</strong> nel settore automotive in Scania Italia, tra
+      <strong>integrazione di sistemi e Business Intelligence</strong>. Come sviluppatore ho realizzato
+      <strong>API per integrare il DMS locale con i servizi centrali del gruppo</strong>; dal 2024 sviluppo e amministro
+      la piattaforma QlikView aziendale (15+ applicazioni per 50+ utenti interni e per la
+      <strong>rete di ~120 concessionari e officine</strong>) e sono il <strong>referente interno della sua migrazione
+      verso Power BI</strong>, in affiancamento a consulenti specializzati. Lavoro a contatto diretto con il business
+      per tradurre i requisiti in modelli dati, integrazioni e report affidabili, con attenzione alla
+      <strong>qualità e alla governance del dato</strong>.
+    </p>
+  </div>
 
   <!-- ESPERIENZA -->
   <div class="cv-section">
@@ -184,9 +202,10 @@
         </ul>
       </div>
       <ul class="exp-bullets">
-        <li>Sviluppo e manutenzione di <strong>15+ applicazioni BI in QlikView</strong>, usate da 50+ utenti interni (Finance, Sales, After Sales, Logistica) e ~120 realtà esterne (concessionari e officine)</li>
+        <li>Sviluppo e manutenzione di <strong>15+ applicazioni BI in QlikView</strong>, usate da 50+ utenti interni (Finance, Sales, After Sales, Logistica) e dalla rete di ~120 concessionari e officine</li>
         <li>Amministrazione di <strong>QlikView Server</strong> e automazione di report schedulati con distribuzione verso utenti interni ed esterni</li>
-        <li>Creazione di viste logiche e query complesse in <strong>SQL Server</strong> a supporto dei modelli dati</li>
+        <li>Sviluppo di flussi <strong>ETL</strong> da <strong>IBM DB2 (AS400)</strong> e <strong>SQL Server</strong>, con viste logiche e query complesse a supporto dei modelli dati</li>
+        <li>Progettazione della logica di <strong>riconciliazione anagrafica</strong> tra AS400 e il sistema master clienti: cross-reference storicizzato, regole di deduplica su P.IVA/CF e riduzione delle chiamate a servizi esterni</li>
         <li>Iniziative di <strong>data mining e data preparation</strong> con focus sulla qualità dei dati</li>
         <li>Raccolta requisiti con gli stakeholder e proposta di soluzioni BI scalabili</li>
       </ul>
@@ -199,26 +218,14 @@
       </div>
       <div class="exp-company">Scania Italia — Trento</div>
       <ul class="exp-bullets">
+        <li>Progettazione e sviluppo di <strong>API REST</strong> per l'integrazione del <strong>DMS locale</strong> con i servizi centrali di Scania (Svezia), in coordinamento con il team internazionale</li>
         <li>Sviluppatore principale di una <strong>piattaforma di pianificazione manutenzioni</strong> per officine Scania</li>
         <li>Sviluppo end-to-end con <strong>Java, SQL, JSP, JavaScript, Bootstrap, jQuery</strong></li>
-        <li>Progettazione e implementazione di <strong>API REST in Java</strong></li>
-        <li>Esperienza su <strong>Apache Kafka</strong> e <strong>Spring Boot</strong> per microservizi scalabili</li>
+        <li>Architettura a microservizi con <strong>Spring Boot</strong> e <strong>Apache Kafka</strong> per lo scambio dati tra sistemi; API REST per l'integrazione applicativa</li>
         <li>Monitoraggio con <strong>Grafana, Loki e Jaeger</strong></li>
       </ul>
     </div>
 
-    <div class="exp-item">
-      <div class="exp-header">
-        <div class="exp-role">Stagista IT</div>
-        <div class="exp-period">Giu 2014 → Lug 2014</div>
-      </div>
-      <div class="exp-company">Unifarm S.p.A.</div>
-      <ul class="exp-bullets">
-        <li>Manutenzione infrastruttura di rete: sostituzione e configurazione di router e access point</li>
-        <li>Interventi hardware presso farmacie del Triveneto</li>
-        <li>Gestione inventario, magazzino e spedizione attrezzature IT</li>
-      </ul>
-    </div>
   </div>
 
   <!-- COMPETENZE -->
@@ -231,11 +238,23 @@
       </tr>
       <tr>
         <td>Modellazione dati</td>
-        <td>Semantic model, modelli dimensionali, DAX, Power Query / M, script QlikView</td>
+        <td>Semantic model, modelli dimensionali, DAX</td>
+      </tr>
+      <tr>
+        <td>ETL &amp; preparazione dati</td>
+        <td>ETL, Power Query / M, script QlikView, data preparation</td>
       </tr>
       <tr>
         <td>Database</td>
-        <td>SQL Server, IBM DB2, MySQL</td>
+        <td>SQL Server, IBM DB2 (AS400), MySQL</td>
+      </tr>
+      <tr>
+        <td>Integrazione</td>
+        <td>REST API, Apache Kafka, microservizi, integrazione DMS</td>
+      </tr>
+      <tr>
+        <td>Governance del dato</td>
+        <td>Riconciliazione anagrafiche, deduplica, qualità del dato</td>
       </tr>
       <tr>
         <td>AI &amp; automazione</td>
@@ -243,7 +262,7 @@
       </tr>
       <tr>
         <td>Background sviluppo</td>
-        <td>Java EE, Spring Boot, REST API, Apache Kafka, JavaScript, HTML/CSS, Git</td>
+        <td>Java EE, Spring Boot, JavaScript, HTML/CSS, Git</td>
       </tr>
       <tr>
         <td>Infrastruttura</td>
@@ -265,7 +284,6 @@
       <ul class="cert-list">
         <li>PL-300 — Microsoft Power BI Data Analyst <span class="cert-wip">In preparazione</span></li>
         <li>EUCIP — AICA, Moduli 1 &amp; 2</li>
-        <li>ECDL — I.T.T. G. Marconi, Moduli 1–7</li>
       </ul>
     </div>
 

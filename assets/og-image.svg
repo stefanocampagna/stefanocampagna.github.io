@@ -25,8 +25,8 @@
   <line x1="104" y1="348" x2="600" y2="348" stroke="#1e2e2b" stroke-width="1"/>
 
   <!-- Subtitle -->
-  <text x="104" y="392" font-family="IBM Plex Sans, sans-serif" font-size="26" font-weight="300" fill="#7a9e97" letter-spacing="0">Senior BI Developer &amp; Data Management Specialist</text>
-  <text x="104" y="428" font-family="IBM Plex Sans, sans-serif" font-size="22" font-weight="300" fill="#4d7a72">9+ anni di esperienza · QlikView · Power BI · SQL Server</text>
+  <text x="104" y="392" font-family="IBM Plex Sans, sans-serif" font-size="26" font-weight="300" fill="#7a9e97" letter-spacing="0">Business Intelligence &amp; Data Integration</text>
+  <text x="104" y="428" font-family="IBM Plex Sans, sans-serif" font-size="22" font-weight="300" fill="#4d7a72">10+ anni di esperienza · Power BI · QlikView · SQL Server · API</text>
 
   <!-- Domain badge -->
   <rect x="104" y="480" width="256" height="40" rx="6" fill="#111a18" stroke="#1e2e2b" stroke-width="1"/>
